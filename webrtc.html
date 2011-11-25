@@ -116,7 +116,7 @@
           // This is important for Rec-track documents, do not copy a patent URI from a random
           // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
           // Team Contact.
-          wgPatentURI:  "",
+          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/47318/status",
       };
   //]]>
   </script>
@@ -200,31 +200,31 @@
   <h2>NavigatorUserMedia</h2>
 
   <dl title='[NoInterfaceObject] interface NavigatorUserMedia' class='idl'>
-    <dt>void getUserMedia(in MediaStreamOptions? options, in NavigatorUserMediaSuccessCallback?
-    successCallback, in optional NavigatorUserMediaErrorCallback? errorCallback)</dt>
+    <dt>void getUserMedia(MediaStreamOptions? options, NavigatorUserMediaSuccessCallback?
+    successCallback,  optional NavigatorUserMediaErrorCallback? errorCallback)</dt>
 
     <dd>
       <p>Prompts the user for permission to use their Web cam or other video or audio
       input.</p>
 
-      <p>The <var title="">options</var> argument is an object of type
-      <code title="">MediaStreamOptions</code>. The object can contain
+      <p>The <var>options</var> argument is an object of type
+      <code>MediaStreamOptions</code>. The object can contain
       the following boolean properties:
       </p>
 
       <dl>
-        <dt>"<code title="">audio</code>"</dt>
+        <dt>"<code>audio</code>"</dt>
         <dd>The provided media needs to include audio data.</dd>
 
-        <dt>"<code title="">video</code>"</dt>
+        <dt>"<code>video</code>"</dt>
         <dd>The provided media needs to include video data.</dd>
       </dl>
 
-      <p>If the user accepts, the <var title="">successCallback</var> is invoked, with a
-      suitable <code><a href="#localmediastream">LocalMediaStream</a></code> object as
+      <p>If the user accepts, the <var>successCallback</var> is invoked, with a
+      suitable <code><a>LocalMediaStream</a></code> object as
       its argument.</p>
 
-      <p>If the user declines, the <var title="">errorCallback</var> (if any) is
+      <p>If the user declines, the <var>errorCallback</var> (if any) is
       invoked.</p>
 
       <p>When the <a href=
@@ -234,46 +234,46 @@
 
       <ol>
         <li>
-          <p>Let <var title="">options</var> be the method's first argument.</p>
+          <p>Let <var>options</var> be the method's first argument.</p>
         </li>
 
         <li>
-          <p>Let <var title="">successCallback</var> be the callback indicated by the
+          <p>Let <var>successCallback</var> be the callback indicated by the
           method's second argument.</p>
         </li>
 
         <li>
-          <p>Let <var title="">errorCallback</var> be the callback indicated by the
+          <p>Let <var>errorCallback</var> be the callback indicated by the
           method's third argument, if any, or null otherwise.</p>
         </li>
 
         <li>
-          <p>If <var title="">successCallback</var> is null, abort these steps.</p>
+          <p>If <var>successCallback</var> is null, abort these steps.</p>
         </li><!-- we could throw an exception instead (that's
    why the method doesn't return until later: so that we can add an
    exception here, or for /options/ below, without changing the
    algorithm) -->
 
         <li>
-          <p>Let <var title="">audio</var> be true.</p>
+          <p>Let <var>audio</var> be true.</p>
         </li>
 
         <li>
-          <p>Let <var title="">video</var> be true.</p>
+          <p>Let <var>video</var> be true.</p>
         </li>
 
         <li>
-          <p>If the <var title="">audio</var> property in <var title="">options</var>
-          is present and set to false, let <var title="">audio</var> be false.</p>
+          <p>If the <var>audio</var> property in <var>options</var>
+          is present and set to false, let <var>audio</var> be false.</p>
         </li>
 
         <li>
-          <p>If the <var title="">video</var> property in <var title="">options</var>
-          is present and set to false, let <var title="">video</var> be false.</p>
+          <p>If the <var>video</var> property in <var>options</var>
+          is present and set to false, let <var>video</var> be false.</p>
         </li>
 
         <li>
-          <p>If both <var title="">audio</var> and <var title="">video</var> are still
+          <p>If both <var>audio</var> and <var>video</var> are still
           false, then throw a <code>NOT_SUPPORTED_ERR</code> exception and abort these
           steps.</p>
         </li>
@@ -290,16 +290,15 @@
 
         <li>
           <p>Prompt the user in a user-agent-specific manner for permission to provide
-          the entry script's origin with a <code><a href=
-          "#localmediastream">LocalMediaStream</a></code> object representing a media
+          the entry script's origin with a <code><a>LocalMediaStream</a></code> object representing a media
           stream.</p>
 
-          <p>If <var title="">audio</var> is true, then the provided media should include
-          an audio track. If <var title="">audio</var> is false, then the provided media
+          <p>If <var>audio</var> is true, then the provided media should include
+          an audio track. If <var>audio</var> is false, then the provided media
           must not include an audio track.</p>
 
-          <p>If <var title="">video</var> is true, then the provided media should include
-          a video track. If <var title="">video</var> is false, then the provided media
+          <p>If <var>video</var> is true, then the provided media should include
+          a video track. If <var>video</var> is false, then the provided media
           must not include a video track.</p>
 
           <p>User agents are encouraged to default to using the user's primary or system
@@ -320,14 +319,13 @@
         </li>
 
         <li>
-          <p>Let <var title="">stream</var> be the <code><a href=
-          "#localmediastream">LocalMediaStream</a></code> object for which the user
+          <p>Let <var>stream</var> be the <code><a>LocalMediaStream</a></code> object for which the user
           granted permission.</p>
         </li>
 
         <li>
-          <p>Queue a task to invoke <var title="">successCallback</var> with
-          <var title="">stream</var> as its argument.</p>
+          <p>Queue a task to invoke <var>successCallback</var> with
+          <var>stream</var> as its argument.</p>
         </li>
 
         <li>
@@ -335,13 +333,12 @@
         </li>
 
         <li>
-          <p><em>Failure</em>: If <var title="">errorCallback</var> is null, abort these
+          <p><em>Failure</em>: If <var>errorCallback</var> is null, abort these
           steps.</p>
         </li>
 
         <li>
-          <p>Let <var title="">error</var> be a new <code><a href=
-          "#navigatorusermediaerror">NavigatorUserMediaError</a></code> object whose
+          <p>Let <var>error</var> be a new <code><a>NavigatorUserMediaError</a></code> object whose
           <code title="dom-NavigatorUserMediaError-code"><a href=
           "#dom-navigatorusermediaerror-code">code</a></code> attribute has the numeric
           value 1 (<code title="dom-NavigatorUserMediaError-PERMISSION_DENIED"><a href=
@@ -349,8 +346,8 @@
         </li>
 
         <li>
-          <p>Queue a task to invoke <var title="">errorCallback</var> with
-          <var title="">error</var> as its argument.</p>
+          <p>Queue a task to invoke <var>errorCallback</var> with
+          <var>error</var> as its argument.</p>
         </li>
       </ol>
 
@@ -365,11 +362,11 @@
   <section>
   <h2>MediaStreamOptions</h2>
 
-  <dl title='[NoInterfaceObject] interface MediaStreamOptions' class='idl'>
-    <dt>attribute boolean audio</dt>
+  <dl title='dictionary MediaStreamOptions' class='idl'>
+    <dt>boolean audio</dt>
     <dd>Set to false if an audio track is not required, default is true</dd>
 
-    <dt>attribute boolean video</dt>
+    <dt>boolean video</dt>
     <dd>Set to false if a video track is not required, default is true</dd>
   </dl>
   </section>
@@ -378,9 +375,9 @@
   <h2>NavigatorUserMediaSuccessCallback</h2>
 
   <dl title=
-  '[Callback=FunctionOnly, NoInterfaceObject] interface NavigatorUserMediaSuccessCallback'
+  '[Callback, NoInterfaceObject] interface NavigatorUserMediaSuccessCallback'
   class='idl'>
-    <dt>void handleEvent(in LocalMediaStream stream)</dt>
+    <dt>void handleEvent(LocalMediaStream stream)</dt>
 
     <dd>(Explanation of handleEvent TBD)</dd>
   </dl>
@@ -404,9 +401,9 @@
   </dl>
 
   <dl title=
-  '[Callback=FunctionOnly, NoInterfaceObject] interface NavigatorUserMediaErrorCallback'
+  '[Callback, NoInterfaceObject] interface NavigatorUserMediaErrorCallback'
   class='idl'>
-    <dt>void handleEvent(in NavigatorUserMediaError error)</dt>
+    <dt>void handleEvent(NavigatorUserMediaError error)</dt>
 
     <dd>(Explanation of handleEvent TBD)</dd>
   </dl>
@@ -416,12 +413,12 @@
   <section>
   <h3>Examples</h3>
 
-  <div class="example">
+  <div>
     <p>A voice chat feature in a game could attempt to get access to the user's
     microphone by calling the API as follows:</p>
-    <pre>
+    <pre class='example sh_javascript'>
 &lt;script&gt;
- navigator.getUserMedia('audio', gotAudio);
+ navigator.getUserMedia({audio:true}, gotAudio);
  function gotAudio(stream) {
    // ... use 'stream' ...
  }
@@ -429,12 +426,12 @@
 </pre>
   </div>
 
-  <div class="example">
+  <div>
     <p>A video-conferencing system would ask for both audio and video:</p>
-    <pre>
+    <pre class='example sh_javascript'>
 &lt;script&gt;
  function beginCall() {
-   navigator.getUserMedia('audio,video user', gotStream);
+   navigator.getUserMedia({audio:true, video:true}, gotStream);
  }
  function gotStream(stream) {
    // ... use 'stream' ...
@@ -451,58 +448,52 @@
   <section>
   <h3>Introduction</h3>
 
-  <p>The <code><a href="#mediastream">MediaStream</a></code> interface is used to
+  <p>The <code><a>MediaStream</a></code> interface is used to
   represent streams of media data, typically (but not necessarily) of audio and/or video
-  content, e.g. from a local camera or a remote site. The data from a <code><a href=
-  "#mediastream">MediaStream</a></code> object does not necessarily have a canonical
+  content, e.g. from a local camera or a remote site. The data from a <code><a>MediaStream</a></code> object does not necessarily have a canonical
   binary form; for example, it could just be "the video currently coming from the user's
   video camera". This allows user agents to manipulate media streams in whatever fashion
   is most suitable on the user's platform.</p>
 
-  <p>Each <code><a href="#mediastream">MediaStream</a></code> object can represent zero
+  <p>Each <code><a>MediaStream</a></code> object can represent zero
   or more tracks, in particular audio and video tracks. Tracks can contain multiple
   channels of parallel data; for example a single audio track could have nine channels of
   audio data to represent a 7.2 surround sound audio track.</p>
 
-  <p>Each track represented by a <code><a href="#mediastream">MediaStream</a></code>
-  object has a corresponding <code><a href=
-  "#mediastreamtrack">MediaStreamTrack</a></code> object.</p>
+  <p>Each track represented by a <code><a>MediaStream</a></code>
+  object has a corresponding <code><a>MediaStreamTrack</a></code> object.</p>
 
-  <p>A <code><a href="#mediastream">MediaStream</a></code> object has an input and an
-  output. The input depends on how the object was created: a <code><a href=
-  "#localmediastream">LocalMediaStream</a></code> object generated by a <code title=
+  <p>A <code><a>MediaStream</a></code> object has an input and an
+  output. The input depends on how the object was created: a <code><a>LocalMediaStream</a></code> object generated by a <code title=
   'dom-navigator-getUserMedia'><a href=
   "#dom-navigator-getusermedia">getUserMedia()</a></code> call, for instance, might take
-  its input from the user's local camera, while a <code><a href=
-  "#mediastream">MediaStream</a></code> created by a <code><a href=
-  "#peerconnection">PeerConnection</a></code> object will take as input the data received
+  its input from the user's local camera, while a <code><a>MediaStream</a></code> created by a <code><a>PeerConnection</a></code> object will take as input the data received
   from a remote peer. The output of the object controls how the object is used, e.g. what
   is saved if the object is written to a file, what is displayed if the object is used in
   a <code>video</code> element, or indeed what is transmitted to a remote peer if the
-  object is used with a <code><a href="#peerconnection">PeerConnection</a></code>
+  object is used with a <code><a>PeerConnection</a></code>
   object.</p>
 
-  <p>Each track in a <code><a href="#mediastream">MediaStream</a></code> object can be
+  <p>Each track in a <code><a>MediaStream</a></code> object can be
   disabled, meaning that it is muted in the object's output. All tracks are initially
   enabled.</p>
 
-  <p id='finishedMute'>A <code><a href="#mediastream">MediaStream</a></code> can be
+  <p id='finishedMute'>A <code><a>MediaStream</a></code> can be
   <a href="#concept-stream-finished" title="concept-stream-finished">finished</a>,
-  indicating that its inputs have forever stopped providing data. When a <code><a href=
-  "#mediastream">MediaStream</a></code> object is finished, all its tracks are muted
+  indicating that its inputs have forever stopped providing data. When a <code><a>MediaStream</a></code> object is finished, all its tracks are muted
   regardless of whether they are enabled or disabled.</p>
 
-  <p>The output of a <code><a href="#mediastream">MediaStream</a></code> object must
+  <p>The output of a <code><a>MediaStream</a></code> object must
   correspond to the tracks in its input. Muted audio tracks must be replaced with
   silence. Muted video tracks must be replaced with blackness.</p>
 
-  <p>A new <code><a href="#mediastream">MediaStream</a></code> object can be created
-  from a list of <code><a href="#mediastreamtrack">MediaStreamTrack</a></code> objects
+  <p>A new <code><a>MediaStream</a></code> object can be created
+  from a list of <code><a>MediaStreamTrack</a></code> objects
   using the <code title='dom-MediaStream'><a href="#dom-mediastream">MediaStream()</a>
-  </code> constructor. The list of <code><a href="#mediastreamtrack">MediaStreamTrack</a>
+  </code> constructor. The list of <code><a>MediaStreamTrack</a>
   </code> objects can be the track list of another stream, a subset of the track list of
-  a stream or a composition of <code><a href="#mediastreamtrack">MediaStreamTrack</a>
-  </code> objects from different <code><a href="#mediastream">MediaStream</a></code> objects.
+  a stream or a composition of <code><a>MediaStreamTrack</a>
+  </code> objects from different <code><a>MediaStream</a></code> objects.
 
   <p><img alt="" src='images/media-stream-1.png' /></p><!-- no alt since
   it's all described in the previous paragraphs: this is just a
@@ -617,15 +608,14 @@ function mediaStream(c,x,y,vid) {
 }
 -->
 
-  <p>The ability to duplicate a <code><a href="#mediastream">MediaStream</a></code>, i.e.
-  create a new <code><a href="#mediastream">MediaStream</a></code> object from the track
-  list of an existing stream, allows for greater control since separate <code>
-  <a href="#mediastream">MediaStream</a></code> instances can be manipulated and consumed
+  <p>The ability to duplicate a <code><a>MediaStream</a></code>, i.e.
+  create a new <code><a>MediaStream</a></code> object from the track
+  list of an existing stream, allows for greater control since separate <code><a>MediaStream</a></code> instances can be manipulated and consumed
   individually. This can be used, for instance, in a video-conferencing scenario to display
   the local video from the user's camera and microphone in a local monitor, while only
   transmitting the audio to the remote peer (e.g. in response to the user using a "video
-  mute" feature). Combining tracks from different <code><a href="#mediastream">MediaStream</a>
-  </code> objects into a new <code><a href="#mediastream">MediaStream</a></code> makes it
+  mute" feature). Combining tracks from different <code><a>MediaStream</a>
+  </code> objects into a new <code><a>MediaStream</a></code> makes it
   possible to, e.g., record selected tracks from a conversation involving several <code>
   <a href="#mediastream">MediaStream</a></code> objects with a single <code>
   <a href="#mediastreamrecorder">MediaStreamRecorder</a></code>.</p>
@@ -772,13 +762,13 @@ function mediaStream(c,x,y,vid) {
 }
 -->
 
-  <p>The <code><a href="#localmediastream">LocalMediaStream</a></code> interface is used
+  <p>The <code><a>LocalMediaStream</a></code> interface is used
   when the user agent is generating the stream's data (e.g. from a camera or streaming it
   from a local video file). It allows authors to control individual tracks during the
   generation of the content, e.g. to allow the user to temporarily disable a local camera
   during a video-conference chat.</p>
 
-  <p>When a <code><a href="#localmediastream">LocalMediaStream</a></code> object is being
+  <p>When a <code><a>LocalMediaStream</a></code> object is being
   generated from a local file (as opposed to a live audio/video source), the user agent
   should stream the data from the file in real time, not all at once. This reduces the
   ease with which pages can distinguish live video from pre-recorded video, which can
@@ -791,18 +781,17 @@ function mediaStream(c,x,y,vid) {
   <h4>MediaStream</h4>
 
   <p>The <dfn id='dom-mediastream' title='dom-MediaStream'><code>MediaStream(<var title=
-  "">trackList</var>)</code></dfn> constructor must return a new <code><a href=
-  "#mediastream">MediaStream</a></code> object with a newly generated label.
-  A new <code><a href="#mediastreamtrack">MediaStreamTrack</a></code> object is created
-  for every unique underlying media source in <var title="">trackList</var> and appended
-  to the new <code><a href="#mediastream">MediaStream</a></code> object's track list
+  "">trackList</var>)</code></dfn> constructor must return a new <code><a>MediaStream</a></code> object with a newly generated label.
+  A new <code><a>MediaStreamTrack</a></code> object is created
+  for every unique underlying media source in <var>trackList</var> and appended
+  to the new <code><a>MediaStream</a></code> object's track list
   according to the track ordering constraints.
 
-  <p>A <code><a href="#mediastream">MediaStream</a></code> object is said to <em>end</em>
+  <p>A <code><a>MediaStream</a></code> object is said to <em>end</em>
   when the user agent learns that no more data will ever be forthcoming for this
   stream.</p>
 
-  <p>When a <code><a href="#mediastream">MediaStream</a></code> object ends for any
+  <p>When a <code><a>MediaStream</a></code> object ends for any
   reason (e.g. because the user rescinds the permission for the page to use the local
   camera, or because the data comes from a finite file and the file's end has been
   reached and the user has not requested that it be looped, or because the stream comes
@@ -837,7 +826,7 @@ function mediaStream(c,x,y,vid) {
     </li>
   </ol>
 
-  <p>As soon as a <code><a href="#mediastream">MediaStream</a></code> object is <a href=
+  <p>As soon as a <code><a>MediaStream</a></code> object is <a href=
   "#concept-stream-finished" title="concept-stream-finished">finished</a>, the stream's
   tracks start outputting only silence and/or blackness, as appropriate, <a href=
   "#finishedMute">as defined earlier</a>.</p>
@@ -847,35 +836,32 @@ function mediaStream(c,x,y,vid) {
   interaction task source. Otherwise the task source for this
   <span title='concept-task'>task</span> is the networking task source.</p>
 
-  <dl title='[Constructor (in MediaStreamTrackList trackList)] interface MediaStream' class=
+  <dl title='[Constructor (MediaStreamTrackList trackList)] interface MediaStream' class=
   'idl'>
     <dt>readonly attribute DOMString label</dt>
 
     <dd>Returns a label that is unique to this stream, so that streams can be recognized
-    after they are sent through the <code><a href=
-    "#peerconnection">PeerConnection</a></code> API.</dd>
+    after they are sent through the <code><a>PeerConnection</a></code> API.</dd>
 
     <dt>readonly attribute MediaStreamTrackList tracks</dt>
 
     <dd>
-      <p>Returns a <code><a href="#mediastreamtracklist">MediaStreamTrackList</a></code>
+      <p>Returns a <code><a>MediaStreamTrackList</a></code>
       object representing the tracks that can be enabled and disabled.</p>
 
-      <p>A <code><a href="#mediastream">MediaStream</a></code> can have multiple audio
+      <p>A <code><a>MediaStream</a></code> can have multiple audio
       and video sources (e.g. because the user has multiple microphones, or because the
       real source of the stream is a <a href="#media-resource">media resource</a> with
-      many media tracks). The stream represented by a <code><a href=
-      "#mediastream">MediaStream</a></code> thus has zero or more tracks.</p>
+      many media tracks). The stream represented by a <code><a>MediaStream</a></code> thus has zero or more tracks.</p>
 
       <p>The <dfn id='dom-mediastream-tracks' title=
       'dom-MediaStream-tracks'><code>tracks</code></dfn> attribute must return an
       <span title="array host objects">array host object</span> for objects of type
-      <code><a href="#mediastreamtrack">MediaStreamTrack</a></code> that is <em>fixed
+      <code><a>MediaStreamTrack</a></code> that is <em>fixed
       length</em> and <em>read only</em>. The same object must be returned each time the
       attribute is accessed. [[!WEBIDL]]</p>
 
-      <p>The array must contain the <code><a href=
-      "#mediastreamtrack">MediaStreamTrack</a></code> objects that correspond to the the
+      <p>The array must contain the <code><a>MediaStreamTrack</a></code> objects that correspond to the the
       tracks of the stream. The relative order of all tracks in a user agent must be
       stable. All audio tracks must precede all video tracks. Tracks that come from a
       <a href="#media-resource">media resource</a> whose format defines an order must be
@@ -889,14 +875,12 @@ function mediaStream(c,x,y,vid) {
     <dt>MediaStreamRecorder record()</dt>
 
     <dd>
-      <p>Begins recording the stream. The returned <code><a href=
-      "#mediastreamrecorder">MediaStreamRecorder</a></code> object provides access to the
+      <p>Begins recording the stream. The returned <code><a>MediaStreamRecorder</a></code> object provides access to the
       recorded data.</p>
 
       <p>When the <dfn id='dom-mediastream-record' title=
       'dom-MediaStream-record'><code>record()</code></dfn> method is invoked, the user
-      agent must return a new <code><a href=
-      "#mediastreamrecorder">MediaStreamRecorder</a></code> object associated with the
+      agent must return a new <code><a>MediaStreamRecorder</a></code> object associated with the
       stream.</p>
     </dd>
 
@@ -919,15 +903,14 @@ function mediaStream(c,x,y,vid) {
       (as defined below). It can have the following values: <dfn>LIVE</dfn> or
       <dfn>ENDED</dfn>.</p>
 
-      <p>When a <code><a href="#mediastream">MediaStream</a></code> object is created,
+      <p>When a <code><a>MediaStream</a></code> object is created,
       its <code title='dom-MediaStream-readyState'><a href=
       "#dom-mediastream-readystate">readyState</a></code> attribute must be set to
       <code title='dom-MediaStream-LIVE'><a href="#dom-mediastream-live">LIVE</a></code>
       (1), unless it is being created using the <code title='dom-MediaStream'><a href=
       "#dom-mediastream">MediaStream()</a></code> constructor whose argument is a list of
-      <code><a href="#mediastreamtrack">MediaStreamTrack</a></code> objects whose underlying
-      media sources will never produce any more data, in which case the <code><a href=
-      "#mediastream">MediaStream</a></code> object must be created with its <code title=
+      <code><a>MediaStreamTrack</a></code> objects whose underlying
+      media sources will never produce any more data, in which case the <code><a>MediaStream</a></code> object must be created with its <code title=
       'dom-MediaStream-readyState'><a href=
       "#dom-mediastream-readystate">readyState</a></code> attribute set to <code title=
       'dom-MediaStream-ENDED'><a href="#dom-mediastream-ended">ENDED</a></code> (2).</p>
@@ -937,7 +920,7 @@ function mediaStream(c,x,y,vid) {
 
     <dd>This event handler, of type <code title='event-MediaStream-ended'><a href=
     "#event-mediastream-ended">ended</a></code>, must be supported by all objects
-    implementing the <code><a href="#mediastream">MediaStream</a></code> interface.</dd>
+    implementing the <code><a>MediaStream</a></code> interface.</dd>
   </dl>
 
   <div title='MediaStream implements EventTarget' class='idl'></div>
@@ -950,7 +933,7 @@ function mediaStream(c,x,y,vid) {
     <dt>void stop()</dt>
 
     <dd>
-      <p>When a <code><a href="#localmediastream">LocalMediaStream</a></code> object's
+      <p>When a <code><a>LocalMediaStream</a></code> object's
       <dfn id='dom-mediastream-stop' title=
       'dom-MediaStream-stop'><code>stop()</code></dfn> method is invoked, the user agent
       must queue a task that runs the following steps:</p>
@@ -1018,7 +1001,7 @@ function mediaStream(c,x,y,vid) {
     <dt>readonly attribute DOMString label</dt>
 
     <dd>
-      <p>When a <code><a href="#localmediastream">LocalMediaStream</a></code> object is
+      <p>When a <code><a>LocalMediaStream</a></code> object is
       created, the user agent must generate a globally unique identifier string, and must
       initialize the object's <code title='dom-MediaStream-label'><a href=
       "#dom-mediastream-label">label</a></code> attribute to that string. Such strings
@@ -1028,14 +1011,14 @@ function mediaStream(c,x,y,vid) {
   including hyphens; the ranges above comes from RFC4574 (the a=label:
   thing in SDP) -->
 
-      <p>When a <code><a href="#mediastream">MediaStream</a></code> is created to
+      <p>When a <code><a>MediaStream</a></code> is created to
       represent a stream obtained from a remote peer, the <code title=
       'dom-MediaStream-label'><a href="#dom-mediastream-label">label</a></code> attribute
       is initialized from information provided by the remote source.</p>
       <!-- described below
   -->
 
-      <p>When a <code><a href="#mediastream">MediaStream</a></code> is created from
+      <p>When a <code><a>MediaStream</a></code> is created from
       another using the <code title='dom-MediaStream'><a href=
       "#dom-mediastream">MediaStream()</a></code> constructor, the <code title=
       'dom-MediaStream-label'><a href="#dom-mediastream-label">label</a></code> attribute
@@ -1045,11 +1028,10 @@ function mediaStream(c,x,y,vid) {
       'dom-MediaStream-label'><code>label</code></dfn> attribute must return the value to
       which it was initialized when the object was created.</p>
 
-      <p class='note'>The label of a <code><a href="#mediastream">MediaStream</a></code>
+      <p class='note'>The label of a <code><a>MediaStream</a></code>
       object is unique to the source of the stream, but that does not mean it is not
       possible to end up with duplicates. For example, a locally
-      generated stream could be sent from one user to a remote peer using <code><a href=
-      "#peerconnection">PeerConnection</a></code>, and then sent back to the original
+      generated stream could be sent from one user to a remote peer using <code><a>PeerConnection</a></code>, and then sent back to the original
       user in the same manner, in which case the original user will have multiple streams
       with the same label (the locally-generated one and the one received from the remote
       peer).</p>
@@ -1064,8 +1046,7 @@ function mediaStream(c,x,y,vid) {
       <p class='note'>Thus the <code title='dom-MediaStreamTrack-kind'><a href=
       "#dom-mediastreamtrack-kind">kind</a></code> and <code title=
       'dom-MediaStreamTrack-label'><a href="#dom-mediastreamtrack-label">label</a></code>
-      attributes do not change value, even if the <code><a href=
-      "#mediastreamtrack">MediaStreamTrack</a></code> object is disassociated from its
+      attributes do not change value, even if the <code><a>MediaStreamTrack</a></code> object is disassociated from its
       corresponding track.</p>
     </dd>
 
@@ -1075,13 +1056,11 @@ function mediaStream(c,x,y,vid) {
       <p>The <dfn id='dom-mediastreamtrack-enabled' title=
       'dom-MediaStreamTrack-enabled'><code>MediaStreamTrack.enabled</code></dfn>
       attribute, on getting, must return the last value to which it was set. On setting,
-      it must be set to the new value, and then, if the <code><a href=
-      "#mediastreamtrack">MediaStreamTrack</a></code> object is still associated with a
+      it must be set to the new value, and then, if the <code><a>MediaStreamTrack</a></code> object is still associated with a
       track, must enable the track if the new value is true, and disable it
       otherwise.</p>
 
-      <p class='note'>Thus, after a <code><a href=
-      "#mediastreamtrack">MediaStreamTrack</a></code> is disassociated from its track,
+      <p class='note'>Thus, after a <code><a>MediaStreamTrack</a></code> is disassociated from its track,
       its <code title='dom-MediaStreamTrack-enabled'><a href=
       "#dom-mediastreamtrack-enabled">enabled</a></code> attribute still changes value
       when set, it just doesn't do anything with that new value.</p>
@@ -1093,7 +1072,7 @@ function mediaStream(c,x,y,vid) {
   <h4>MediaStreamRecorder</h4>
 
   <dl title='interface MediaStreamRecorder' class='idl'>
-    <dt>voice getRecordedData (in BlobCallback? callback)</dt>
+    <dt>voice getRecordedData (BlobCallback? callback)</dt>
 
     <dd>
       <p>Creates a <code>Blob</code> of the recorded data, and invokes the provided
@@ -1105,22 +1084,21 @@ function mediaStream(c,x,y,vid) {
 
       <ol>
         <li>
-          <p>Let <var title="">callback</var> be the callback indicated by the method's
+          <p>Let <var>callback</var> be the callback indicated by the method's
           first argument.</p>
         </li>
 
         <li>
-          <p>If <var title="">callback</var> is null, abort these steps.</p>
+          <p>If <var>callback</var> is null, abort these steps.</p>
         </li><!-- we could throw an exception instead (that's
    why the method doesn't return until later: so that we can add an
    exception here without changing the algorithm) -->
 
         <li>
-          <p>Let <var title="">data</var> be the data that was streamed by the
-          <code><a href="#mediastream">MediaStream</a></code> object from which the
-          <code><a href="#mediastreamrecorder">MediaStreamRecorder</a></code> was created
-          since the creation of the <code><a href=
-          "#mediastreamrecorder">MediaStreamRecorder</a></code> object.</p>
+          <p>Let <var>data</var> be the data that was streamed by the
+          <code><a>MediaStream</a></code> object from which the
+          <code><a>MediaStreamRecorder</a></code> was created
+          since the creation of the <code><a>MediaStreamRecorder</a></code> object.</p>
         </li>
 
         <li>
@@ -1128,26 +1106,25 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>Generate a file that containing <var title="">data</var> in a format
+          <p>Generate a file that containing <var>data</var> in a format
           supported by the user agent for use in <code>audio</code> and
           <code>video</code> elements.</p>
         </li>
 
         <li>
-          <p>Let <var title="">blob</var> be a <code>Blob</code> object representing the
+          <p>Let <var>blob</var> be a <code>Blob</code> object representing the
           contents of the file generated in the previous step. [[!FILE-API]]</p>
         </li>
 
         <li>
-          <p>Queue a task to invoke <var title="">callback</var> with
-          <var title="">blob</var> as its argument.</p>
+          <p>Queue a task to invoke <var>callback</var> with
+          <var>blob</var> as its argument.</p>
         </li>
       </ol>
 
       <p class='note'>The <code title='dom-MediaStreamRecorder-getRecordedData'><a href=
       "#dom-mediastreamrecorder-getrecordeddata">getRecordedData()</a></code> method can
-      be called multiple times on one <code><a href=
-      "#mediastreamrecorder">MediaStreamRecorder</a></code> object; each time, it will
+      be called multiple times on one <code><a>MediaStreamRecorder</a></code> object; each time, it will
       create a new file as if this was the first time the method was being called. In
       particular, the method does not stop or reset the recording when the method is
       called.</p>
@@ -1158,9 +1135,9 @@ function mediaStream(c,x,y,vid) {
   <section>
   <h4>BlobCallback</h4>
 
-  <dl title='[Callback=FunctionOnly, NoInterfaceObject] interface BlobCallback' class=
+  <dl title='[Callback, NoInterfaceObject] interface BlobCallback' class=
   'idl'>
-    <dt>void handleEvent (in Blob blob)</dt>
+    <dt>void handleEvent (Blob blob)</dt>
 
     <dd>Def TBD</dd>
   </dl>
@@ -1169,21 +1146,16 @@ function mediaStream(c,x,y,vid) {
   <section>
   <h4>URL</h4>
 
-  <p><em>Note that the following is actually only a partial interface, but ReSpec does
-  not yet support that.</em></p>
-
-  <dl title='interface URL' class='idl'>
-    <dt>static DOMString createObjectURL (in MediaStream stream)</dt>
+  <dl title='partial interface URL' class='idl'>
+    <dt>static DOMString createObjectURL (MediaStream stream)</dt>
 
     <dd>
-      <p>Mints a <a href="#blob-url">Blob URL</a> to refer to the given <code><a href=
-      "#mediastream">MediaStream</a></code>.</p>
+      <p>Mints a <a href="#blob-url">Blob URL</a> to refer to the given <code><a>MediaStream</a></code>.</p>
 
       <p>When the <dfn id='dom-url-createobjecturl' title=
       'dom-URL-createObjectURL'><code>createObjectURL()</code></dfn> method is called
-      with a <code><a href="#mediastream">MediaStream</a></code> argument, the user agent
-      must return a unique <a href="#blob-url">Blob URL</a> for the given <code><a href=
-      "#mediastream">MediaStream</a></code>. [[!FILE-API]]</p>
+      with a <code><a>MediaStream</a></code> argument, the user agent
+      must return a unique <a href="#blob-url">Blob URL</a> for the given <code><a>MediaStream</a></code>. [[!FILE-API]]</p>
 
       <p>For audio and video streams, the data exposed on that stream must be in a format
       supported by the user agent for use in <code>audio</code> and <code>video</code>
@@ -1192,9 +1164,7 @@ function mediaStream(c,x,y,vid) {
       <p class='bookkeeping'>A <dfn id='blob-url'>Blob URL</dfn> is the same as what the
       File API specification calls a Blob URI, except that anything in the
       definition of that feature that refers to <code>File</code> and <code>Blob</code>
-      objects is hereby extended to also apply to <code><a href=
-      "#mediastream">MediaStream</a></code> and <code><a href=
-      "#localmediastream">LocalMediaStream</a></code> objects.</p>
+      objects is hereby extended to also apply to <code><a>MediaStream</a></code> and <code><a>LocalMediaStream</a></code> objects.</p>
     </dd>
   </dl>
   </section>
@@ -1203,12 +1173,12 @@ function mediaStream(c,x,y,vid) {
   <section>
   <h3>Examples</h3>
 
-  <div class="example">
+  <div>
     <p>This sample code exposes a button. When clicked, the button is disabled and the
     user is prompted to offer a stream. The user can cause the button to be re-enabled by
     providing a stream (e.g. giving the page access to the local camera) and then
     disabling the stream (e.g. revoking that access).</p>
-    <pre>
+    <pre class='example sh_javascript'>
 &lt;input type="button" value="Start" onclick="start()" id="startBtn"&gt;
 &lt;script&gt;
  var startBtn = document.getElementById('startBtn');
@@ -1225,10 +1195,10 @@ function mediaStream(c,x,y,vid) {
 </pre>
   </div>
 
-  <div class="example">
+  <div>
     <p>This example allows people to record a short audio message and upload it to the
     server. This example even shows rudimentary error handling.</p>
-    <pre>
+    <pre class='example sh_javascript'>
 &lt;input type="button" value="⚫" onclick="msgRecord()" id="recBtn"&gt;
 &lt;input type="button" value="◼" onclick="msgStop()" id="stopBtn" disabled&gt;
 &lt;p id="status"&gt;To start recording, press the ⚫ button.&lt;/p&gt;
@@ -1282,10 +1252,10 @@ function mediaStream(c,x,y,vid) {
 </pre>
   </div>
 
-  <div class="example">
+  <div>
     <p>This example allows people to take photos of themselves from the local video
     camera.</p>
-    <pre>
+    <pre class='example sh_javascript'>
 &lt;article&gt;
  &lt;style scoped&gt;
   video { transform: scaleX(-1); }
@@ -1332,37 +1302,35 @@ function mediaStream(c,x,y,vid) {
   <section>
   <h2>Peer-to-peer connections</h2>
 
-  <p>A <code><a href="#peerconnection">PeerConnection</a></code> allows two users to
+  <p>A <code><a>PeerConnection</a></code> allows two users to
   communicate directly, browser-to-browser. Communications are coordinated via a
   signaling channel provided by script in the page via the server, e.g. using
   <code>XMLHttpRequest</code>.</p>
 
-  <p>Calling "new <code title='dom-PeerConnection'><a href=
-  "#dom-peerconnection">PeerConnection</a></code>(<var title="">configuration</var>,
-  <var title="">signalingCallback</var>)" creates a <code><a href=
-  "#peerconnection">PeerConnection</a></code> object.</p>
+  <p>Calling <code>new <a>PeerConnection</a>(<var>configuration</var>,
+  <var>signalingCallback</var>)</code> creates a <code><a>PeerConnection</a></code> object.</p>
 
-  <p>The <var title="">configuration</var> string gives the address of a STUN or TURN
+  <p>The <var>configuration</var> string gives the address of a STUN or TURN
   server to use to establish the connection. <a href="#refsSTUN">[STUN]</a> <a href=
   "#refsTURN">[TURN]</a></p>
 
   <p>The allowed formats for this string are:</p>
 
   <dl>
-    <dt>"<code title='""'><var title="">TYPE</var> 203.0.113.2:3478</code>"</dt>
+    <dt>"<code><var>TYPE</var> 203.0.113.2:3478</code>"</dt>
 
     <dd>
       <p>Indicates a specific IP address and port for the server.</p>
     </dd>
 
-    <dt>"<code title='""'><var title="">TYPE</var> relay.example.net:3478</code>""</dt>
+    <dt>"<code><var>TYPE</var> relay.example.net:3478</code>"</dt>
 
     <dd>
       <p>Indicates a specific host and port for the server; the user agent will look up
       the IP address in DNS.</p>
     </dd>
 
-    <dt>"<code title='""'><var title="">TYPE</var> example.net</code>""</dt>
+    <dt>"<code><var>TYPE</var> example.net</code>"</dt>
 
     <dd>
       <p>Indicates a specific domain for the server; the user agent will look up the IP
@@ -1370,27 +1338,27 @@ function mediaStream(c,x,y,vid) {
     </dd>
   </dl>
 
-  <p>The "<code title='""'><var title="">TYPE</var></code>" is one of:</p>
+  <p>The "<code><var>TYPE</var></code>" is one of:</p>
 
   <dl>
-    <dt><code title='""'>STUN</code></dt>
+    <dt><code>STUN</code></dt>
 
     <dd>Indicates a STUN server</dd>
 
-    <dt><code title='""'>STUNS</code></dt>
+    <dt><code>STUNS</code></dt>
 
     <dd>Indicates a STUN server that is to be contacted using a TLS session.</dd>
 
-    <dt><code title='""'>TURN</code></dt>
+    <dt><code>TURN</code></dt>
 
     <dd>Indicates a TURN server</dd>
 
-    <dt><code title='""'>TURNS</code></dt>
+    <dt><code>TURNS</code></dt>
 
     <dd>Indicates a TURN server that is to be contacted using a TLS session.</dd>
   </dl>
 
-  <p>The <var title="">signalingCallback</var> argument is a method that will be invoked
+  <p>The <var>signalingCallback</var> argument is a method that will be invoked
   when the user agent needs to send a message to the other host over the signaling
   channel. When the callback is invoked, convey its first argument (a string) to the
   other peer using whatever method is being used by the Web application to relay
@@ -1399,7 +1367,7 @@ function mediaStream(c,x,y,vid) {
   "#dom-peerconnection-processsignalingmessage">processSignalingMessage()</a></code>
   method.)</p>
 
-  <p>A <code><a href="#peerconnection">PeerConnection</a></code> object has an associated
+  <p>A <code><a>PeerConnection</a></code> object has an associated
   <dfn id='peerconnection-signaling-callback'><code>PeerConnection</code> signaling
   callback</dfn>, a <dfn id='peerconnection-ice-agent'><code>PeerConnection</code> ICE
   Agent</dfn>,
@@ -1418,80 +1386,79 @@ function mediaStream(c,x,y,vid) {
 
   <ol>
     <li>
-      <p>Let <var title="">serverConfiguration</var> be the constructor's first
+      <p>Let <var>serverConfiguration</var> be the constructor's first
       argument.</p>
     </li>
 
     <li>
-      <p>Let <var title="">signalingCallback</var> be the constructor's second
+      <p>Let <var>signalingCallback</var> be the constructor's second
       argument.</p>
     </li>
 
     <li>
-      <p>Let <var title="">connection</var> be a newly created <code><a href=
-      "#peerconnection">PeerConnection</a></code> object.</p>
+      <p>Let <var>connection</var> be a newly created <code><a>PeerConnection</a></code> object.</p>
     </li>
 
     <li>
-      <p>Create an ICE Agent and let <var title="">connection</var>'s <a href=
+      <p>Create an ICE Agent and let <var>connection</var>'s <a href=
       "#peerconnection-ice-agent"><code>PeerConnection</code> ICE Agent</a> be that ICE
       Agent. <a href="#refsICE">[ICE]</a></p>
     </li>
 
     <li>
-      <p>If <var title="">serverConfiguration</var> contains a U+000A LINE FEED (LF)
+      <p>If <var>serverConfiguration</var> contains a U+000A LINE FEED (LF)
       character or a U+000D CARRIAGE RETURN (CR) character (or both), remove all
-      characters from <var title="">serverConfiguration</var> after the first such
+      characters from <var>serverConfiguration</var> after the first such
       character.</p>
     </li>
 
     <li>
       <p><span title="split a string on spaces">Split <var title=
-      "">serverConfiguration</var> on spaces</span> to obtain <var title="">configuration
+      "">serverConfiguration</var> on spaces</span> to obtain <var>configuration
       components</var>.</p>
     </li>
 
     <li>
-      <p>If <var title="">configuration components</var> has two or more components, and
+      <p>If <var>configuration components</var> has two or more components, and
       the first component is a case-sensitive match for one of the following
       strings:</p>
 
       <ul class='breif'>
-        <li>"<code title="">STUN</code>"</li>
+        <li>"<code>STUN</code>"</li>
 
-        <li>"<code title="">STUNS</code>"</li>
+        <li>"<code>STUNS</code>"</li>
 
-        <li>"<code title="">TURN</code>"</li>
+        <li>"<code>TURN</code>"</li>
 
-        <li>"<code title="">TURNS</code>"</li>
+        <li>"<code>TURNS</code>"</li>
       </ul>
 
       <p>...then run the following substeps:</p>
 
       <ol>
         <li>
-          <p>Let <var title="">server type</var> be STUN if the first component of
-          <var title="">configuration components</var> is '<code title="">STUN</code>' or
-          '<code title="">STUNS</code>', and TURN otherwise (the first component of
-          <var title="">configuration components</var> is "<code title="">TURN</code>" or
-          "<code title="">TURNS</code>").</p>
+          <p>Let <var>server type</var> be STUN if the first component of
+          <var>configuration components</var> is '<code>STUN</code>' or
+          '<code>STUNS</code>', and TURN otherwise (the first component of
+          <var>configuration components</var> is "<code>TURN</code>" or
+          "<code>TURNS</code>").</p>
         </li>
 
         <li>
-          <p>Let <var title="">secure</var> be true if the first component of <var title=
-          "">configuration components</var> is "<code title="">STUNS</code>" or
-          "<code title="">TURNS</code>", and false otherwise.</p>
+          <p>Let <var>secure</var> be true if the first component of <var title=
+          "">configuration components</var> is "<code>STUNS</code>" or
+          "<code>TURNS</code>", and false otherwise.</p>
         </li>
 
         <li>
-          <p>Let <var title="">host</var> be the contents of the second component of
-          <var title="">configuration components</var> up to the character before the
+          <p>Let <var>host</var> be the contents of the second component of
+          <var>configuration components</var> up to the character before the
           first U+003A COLON character (:), if any, or the entire string otherwise.</p>
         </li>
 
         <li>
-          <p>Let <var title="">port</var> be the contents of the second component of
-          <var title="">configuration components</var> from the character after the first
+          <p>Let <var>port</var> be the contents of the second component of
+          <var>configuration components</var> from the character after the first
           U+003A COLON character (:) up to the end, if any, or the empty string
           otherwise.</p>
         </li>
@@ -1502,17 +1469,17 @@ function mediaStream(c,x,y,vid) {
           TURN server as follows:</p>
 
           <ul>
-            <li>If <var title="">server type</var> is STUN, the server is a STUN server.
-            Otherwise, <var title="">server type</var> is TURN and the server is a TURN
+            <li>If <var>server type</var> is STUN, the server is a STUN server.
+            Otherwise, <var>server type</var> is TURN and the server is a TURN
             server.</li>
 
-            <li>If <var title="">secure</var> is true, the server is to be contacted
+            <li>If <var>secure</var> is true, the server is to be contacted
             using TLS-over-TCP, otherwise, it is to be contacted using UDP.</li>
 
             <li>The IP address, host name, or domain name of the server is <var title=
             "">host</var>.</li>
 
-            <li>The port to use is <var title="">port</var>. If this is the empty string,
+            <li>The port to use is <var>port</var>. If this is the empty string,
             then only a domain name is configured (and the ICE Agent will use DNS SRV
             requests to determine the IP address and port).</li>
 
@@ -1529,27 +1496,27 @@ function mediaStream(c,x,y,vid) {
     </li>
 
     <li>
-      <p>Let the <var title="">connection</var>'s <a href=
+      <p>Let the <var>connection</var>'s <a href=
       "#peerconnection-signaling-callback"><code>PeerConnection</code> signaling
-      callback</a> be <var title="">signalingCallback</var>.</p>
+      callback</a> be <var>signalingCallback</var>.</p>
     </li>
 
     <li>
-      <p>Set <var title="">connection</var>'s <a href=
+      <p>Set <var>connection</var>'s <a href=
       "#peerconnection-readiness-state"><code>PeerConnection</code> readiness state</a>
       to <code title='dom-PeerConnection-NEW'><a href=
       "#dom-peerconnection-new">NEW</a></code> (0).</p>
     </li>
 
     <li>
-     <p>Set <var title="">connection</var>'s <a href=
+     <p>Set <var>connection</var>'s <a href=
       "#peerconnection-readiness-state"><code>PeerConnection</code> ice state </a>
       to <code title='dom-PeerConnection-NEW'><a href=
       "#dom-peerconnection-new">NEW</a></code> (0).</p>
     </li>
 
         <li>
-     <p>Set <var title="">connection</var>'s <a href=
+     <p>Set <var>connection</var>'s <a href=
       "#peerconnection-readiness-state"><code>PeerConnection</code> sdp state </a>
       to <code title='dom-PeerConnection-NEW'><a href=
       "#dom-peerconnection-new">NEW</a></code> (0).</p>
@@ -1557,30 +1524,30 @@ function mediaStream(c,x,y,vid) {
 
     <!--
     <li>
-      <p>Let <var title="">connection</var>'s <a href=
+      <p>Let <var>connection</var>'s <a href=
       "#peerconnection-data-udp-media-stream"><code>PeerConnection</code> data UDP media
       stream</a> be a new <a href="#data-udp-media-stream">data UDP media stream</a>.</p>
     </li>
 -->
     
     <li>
-      <p>Let <var title="">connection</var>'s <code title=
+      <p>Let <var>connection</var>'s <code title=
       'dom-PeerConnection-localStreams'><a href=
       "#dom-peerconnection-localstreams">localStreams</a></code> attribute be an empty
-      read-only <code><a href="#mediastream">MediaStream</a></code> array.
+      read-only <code><a>MediaStream</a></code> array.
       [[!WEBIDL]]</p>
     </li>
 
     <li>
-      <p>Let <var title="">connection</var>'s <code title=
+      <p>Let <var>connection</var>'s <code title=
       'dom-PeerConnection-remoteStreams'><a href=
       "#dom-peerconnection-remotestreams">remoteStreams</a></code> attribute be an empty
-      read-only <code><a href="#mediastream">MediaStream</a></code> array.
+      read-only <code><a>MediaStream</a></code> array.
       [[!WEBIDL]]</p>
     </li>
 
     <li>
-      <p>Return <var title="">connection</var>, but continue these steps
+      <p>Return <var>connection</var>, but continue these steps
       asynchronously.</p>
     </li>
 
@@ -1650,16 +1617,14 @@ function mediaStream(c,x,y,vid) {
   prepares its <code>video</code> element accordingly, there will be no need for a
   renegotiation once the stream is flowing.</p>
 
-  <p>All SDP media descriptions for streams represented by <code><a href=
-  "#mediastream">MediaStream</a></code> objects must include a label attribute
-  ("<code title="">a=label:</code>") whose value is the value of the <code><a href=
-  "#mediastream">MediaStream</a></code> object's <code title=
+  <p>All SDP media descriptions for streams represented by <code><a>MediaStream</a></code> objects must include a label attribute
+  ("<code>a=label:</code>") whose value is the value of the <code><a>MediaStream</a></code> object's <code title=
   'dom-MediaStream-label'><a href="#dom-mediastream-label">label</a></code> attribute.
   <a href="#refsSDP">[SDP]</a> <a href="#refsSDPLABEL">[SDPLABEL]</a></p>
 
   <p><a href="#peerconnection"><code>PeerConnection</code>s</a> must not generate any
   candidates for media streams whose media descriptions do not have a label attribute
-  ("<code title="">a=label:</code>"). <a href="#refsICE">[ICE]</a> <a href=
+  ("<code>a=label:</code>"). <a href="#refsICE">[ICE]</a> <a href=
   "#refsSDP">[SDP]</a> <a href="#refsSDPLABEL">[SDPLABEL]</a></p>
 
   <p>When a user agent starts receiving media for a component and a candidate was
@@ -1669,12 +1634,11 @@ function mediaStream(c,x,y,vid) {
 
   <ol>
     <li>
-      <p>Let <var title="">connection</var> be the <code><a href=
-      "#peerconnection">PeerConnection</a></code> expecting this media.</p>
+      <p>Let <var>connection</var> be the <code><a>PeerConnection</a></code> expecting this media.</p>
     </li>
 
     <li>
-      <p>If there is already a <code><a href="#mediastream">MediaStream</a></code> object
+      <p>If there is already a <code><a>MediaStream</a></code> object
       for the media stream to which this component belongs, then associate the component
       with that media stream and abort these steps. (Some media streams have multiple
       components; this API does not expose the role of these individual components in
@@ -1682,7 +1646,7 @@ function mediaStream(c,x,y,vid) {
     </li>
 
     <li>
-      <p>Create a <code><a href="#mediastream">MediaStream</a></code> object to represent
+      <p>Create a <code><a>MediaStream</a></code> object to represent
       the media stream. Set its <code title='dom-MediaStream-label'><a href=
       "#dom-mediastream-label">label</a></code> attribute to the value of the SDP Label
       attribute for that component's media stream.</p>
@@ -1693,7 +1657,7 @@ function mediaStream(c,x,y,vid) {
 
       <ol>
         <li>
-          <p>If the <var title="">connection</var>'s <a href=
+          <p>If the <var>connection</var>'s <a href=
           "#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), abort these steps.</p>
@@ -1701,8 +1665,8 @@ function mediaStream(c,x,y,vid) {
      task ran -->
 
         <li>
-          <p>Add the newly created <code><a href="#mediastream">MediaStream</a></code>
-          object to the end of <var title="">connection</var>'s <code title=
+          <p>Add the newly created <code><a>MediaStream</a></code>
+          object to the end of <var>connection</var>'s <code title=
           'dom-PeerConnection-remoteStreams'><a href=
           "#dom-peerconnection-remotestreams">remoteStreams</a></code> array.</p>
         </li>
@@ -1711,7 +1675,7 @@ function mediaStream(c,x,y,vid) {
           <p><a href="#fire-a-stream-event">Fire a stream event</a> named <code title=
           'event-MediaStream-addstream'><a href=
           "#event-mediastream-addstream">addstream</a></code> with the newly created
-          <code><a href="#mediastream">MediaStream</a></code> object at the <var title=
+          <code><a>MediaStream</a></code> object at the <var title=
           "">connection</var> object.</p>
         </li>
       </ol>
@@ -1724,23 +1688,21 @@ function mediaStream(c,x,y,vid) {
 
   <ol>
     <li>
-      <p>Let <var title="">connection</var> be the <code><a href=
-      "#peerconnection">PeerConnection</a></code> associated with the stream being
+      <p>Let <var>connection</var> be the <code><a>PeerConnection</a></code> associated with the stream being
       removed.</p>
     </li>
 
     <li>
-      <p>Let <var title="">stream</var> be the <code><a href=
-      "#mediastream">MediaStream</a></code> object that represents the media stream being
+      <p>Let <var>stream</var> be the <code><a>MediaStream</a></code> object that represents the media stream being
       removed, if any. If there isn't one, then abort these steps.</p>
     </li>
 
     <li>
-      <p>By definition, <var title="">stream</var> is now <a href=
+      <p>By definition, <var>stream</var> is now <a href=
       "#concept-stream-finished" title="concept-stream-finished">finished</a>.</p>
 
       <p class='note'>A <span title='concept-task'>task</span> is thus <span title=
-      "queue a task">queued</span> to update <var title="">stream</var> and fire an
+      "queue a task">queued</span> to update <var>stream</var> and fire an
       event.</p>
     </li>
 
@@ -1749,7 +1711,7 @@ function mediaStream(c,x,y,vid) {
 
       <ol>
         <li>
-          <p>If the <var title="">connection</var>'s <a href=
+          <p>If the <var>connection</var>'s <a href=
           "#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), abort these steps.</p>
@@ -1757,7 +1719,7 @@ function mediaStream(c,x,y,vid) {
      task ran -->
 
         <li>
-          <p>Remove <var title="">stream</var> from <var title="">connection</var>'s
+          <p>Remove <var>stream</var> from <var>connection</var>'s
           <code title='dom-PeerConnection-remoteStreams'><a href=
           "#dom-peerconnection-remotestreams">remoteStreams</a></code> array.</p>
         </li>
@@ -1766,7 +1728,7 @@ function mediaStream(c,x,y,vid) {
           <p><a href="#fire-a-stream-event">Fire a stream event</a> named <code title=
           'event-MediaStream-removestream'><a href=
           "#event-mediastream-removestream">removestream</a></code> with <var title=
-          "">stream</var> at the <var title="">connection</var> object.</p>
+          "">stream</var> at the <var>connection</var> object.</p>
         </li>
       </ol>
     </li>
@@ -1784,9 +1746,9 @@ function mediaStream(c,x,y,vid) {
   <h3>PeerConnection</h3>
 
   <dl title=
-  '[Constructor (in DOMString configuration, in SignalingCallback signalingCallback)] interface PeerConnection'
+  '[Constructor (DOMString configuration, SignalingCallback signalingCallback)] interface PeerConnection'
   class='idl'>
-    <dt>void processSignalingMessage (in DOMString message)</dt>
+    <dt>void processSignalingMessage (DOMString message)</dt>
 
     <dd>
       <p>When a message is relayed from the remote peer over the signaling channel is
@@ -1807,17 +1769,16 @@ function mediaStream(c,x,y,vid) {
 
       <ol>
         <li>
-          <p>Let <var title="">message</var> be the method's argument.</p>
+          <p>Let <var>message</var> be the method's argument.</p>
         </li>
 
         <li>
-          <p>Let <var title="">connection</var> be the <code><a href=
-          "#peerconnection">PeerConnection</a></code> object on which the method was
+          <p>Let <var>connection</var> be the <code><a>PeerConnection</a></code> object on which the method was
           invoked.</p>
         </li>
 
         <li>
-          <p>If <var title="">connection</var>'s <a href=
+          <p>If <var>connection</var>'s <a href=
           "#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), throw an
@@ -1825,24 +1786,23 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>If the first four characters of <var title="">message</var> are not
-          "<code title="">SDP</code>" followed by a U+000A LINE FEED (LF) character, then
+          <p>If the first four characters of <var>message</var> are not
+          "<code>SDP</code>" followed by a U+000A LINE FEED (LF) character, then
           abort these steps. (This indicates an error in the signaling channel
           implementation. User agents may report such errors to their developer consoles
           to aid debugging.)</p>
 
-          <p class='note'>Future extensions to the <code><a href=
-          "#peerconnection">PeerConnection</a></code> interface might use other prefix
+          <p class='note'>Future extensions to the <code><a>PeerConnection</a></code> interface might use other prefix
           values to implement additional features.</p>
         </li>
 
         <li>
-          <p>Let <var title="">sdp</var> be the string consisting of all but the first
-          four characters of <var title="">message</var>.</p>
+          <p>Let <var>sdp</var> be the string consisting of all but the first
+          four characters of <var>message</var>.</p>
         </li>
 
         <li>
-          <p> Pass the <var title="">sdp</var> to the <a href=
+          <p> Pass the <var>sdp</var> to the <a href=
           "#peerconnection-ice-agent"><code>PeerConnection</code> SDP Agent</a>  as a
           subsequent offer or answer, to be interpreted as appropriate given the current
           state of the SDP Agent. <a href="#refsICE">[ICE]</a></p>
@@ -1851,7 +1811,7 @@ function mediaStream(c,x,y,vid) {
         <li>
           <p>The <a href="#ice-started-flag">ICE started flag</a> is false. Start the
           <a href="#peerconnection-ice-agent"><code>PeerConnection</code> ICE Agent</a>
-          and pass it <var title="">sdp</var> as the initial offer from the other peer;
+          and pass it <var>sdp</var> as the initial offer from the other peer;
           the ICE Agent will then (asynchronously) construct the initial answer and
           transmit it as described above.</p>
 
@@ -1869,19 +1829,18 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>Let <var title="">connection</var>'s <a href="#ice-started-flag">ICE started
+          <p>Let <var>connection</var>'s <a href="#ice-started-flag">ICE started
           flag</a> be true.</p>
         </li>
 
         <li>
-          <p>Queue a task that sets <var title="">connection</var>'s
+          <p>Queue a task that sets <var>connection</var>'s
           <a href="#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> to <code title='dom-PeerConnection-NEGOTIATING'><a href=
           "#dom-peerconnection-negotiating">NEGOTIATING</a></code> (1) and then
           <span title="fire a simple event">fires a simple event</span> named
           <code title='event-MediaStream-connecting'><a href=
-          "#event-mediastream-connecting">connecting</a></code> at the <code><a href=
-          "#peerconnection">PeerConnection</a></code> object.</p>
+          "#event-mediastream-connecting">connecting</a></code> at the <code><a>PeerConnection</a></code> object.</p>
         </li>
         -->
         
@@ -1890,27 +1849,25 @@ function mediaStream(c,x,y,vid) {
       <p>When a <a href="#peerconnection-ice-agent"><code>PeerConnection</code> ICE
       Agent</a> forms a connection to the the far side and enters the state
       ICECONNECTED, the user
-      agent must queue a task that sets the <code><a href=
-      "#peerconnection">PeerConnection</a></code> object's <a href=
+      agent must queue a task that sets the <code><a>PeerConnection</a></code> object's <a href=
       "#peerconnection-readiness-state"><code>PeerConnection</code> readiness state</a>
       to <code title='dom-PeerConnection-ACTIVE'><a href=
       "#dom-peerconnection-active">ACTIVE</a></code> (2) and then <span title=
       "fire a simple event">fires a simple event</span> named <code title=
       'event-MediaStream-open'><a href="#event-mediastream-open">open</a></code> at the
-      <code><a href="#peerconnection">PeerConnection</a></code> object.</p>
+      <code><a>PeerConnection</a></code> object.</p>
 
       <!--
       <p>When a <a href="#peerconnection-ice-agent"><code>PeerConnection</code> ICE
       Agent</a> restarts ICE processing for any reason (e.g. because a peer is adding or
       removing a stream), the user agent must queue a task that sets the
-      <code><a href="#peerconnection">PeerConnection</a></code> object's <a href=
+      <code><a>PeerConnection</a></code> object's <a href=
       "#peerconnection-readiness-state"><code>PeerConnection</code> readiness state</a>
       to <code title='dom-PeerConnection-NEGOTIATING'><a href=
       "#dom-peerconnection-negotiating">NEGOTIATING</a></code> (1) and then <span title=
       "fire a simple event">fires a simple event</span> named <code title=
       'event-MediaStream-connecting'><a href=
-      "#event-mediastream-connecting">connecting</a></code> at the <code><a href=
-      "#peerconnection">PeerConnection</a></code> object.</p>
+      "#event-mediastream-connecting">connecting</a></code> at the <code><a>PeerConnection</a></code> object.</p>
       -->
       
     </dd>
@@ -1940,26 +1897,26 @@ function mediaStream(c,x,y,vid) {
 
     <dd>
       <p>The <dfn id='dom-peerconnection-readystate' title=
-      'dom-PeerConnection-readyState'><code title="">readyState</code></dfn> attribute
-      must return the <code><a href="#peerconnection">PeerConnection</a></code> object's
+      'dom-PeerConnection-readyState'><code>readyState</code></dfn> attribute
+      must return the <code><a>PeerConnection</a></code> object's
       <a href="#peerconnection-readiness-state"><code>PeerConnection</code> readiness
       state</a>, represented by a number from the following list:</p>
 
       <dl>
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-NEW'><a href="#dom-peerconnection-new">NEW</a></code>
         (0)</dt>
 
         <dd>The object was just created, and no networking has yet occurred.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-NEGOTIATING'><a href=
         "#dom-peerconnection-negotiating">NEGOTIATING</a></code> (1)</dt>
 
         <dd>The user agent is attempting to establish an connection with the ICE
         Agent and to negotiate codecs with the SDP Agent.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-ACTIVE'><a href=
         "#dom-peerconnection-active">ACTIVE</a></code> (2)</dt>
 
@@ -1967,15 +1924,15 @@ function mediaStream(c,x,y,vid) {
         round of codec negotiation. It is possible for whatever media was
         negotiated to flow.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
        'dom-PeerConnection-CLOSING'><a href=
        "#dom-peerconnection-closed">CLOSING</a></code> (4)</dt>
 
-         <dd> The <code><a href="#peerconnection">PeerConnection</a></code>
+         <dd> The <code><a>PeerConnection</a></code>
          object is terminating all media and is in the process of closing the
          Ice Agent and SDP Agent. </dd>
         
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
        'dom-PeerConnection-CLOSED'><a href=
        "#dom-peerconnection-closed">CLOSED</a></code> (3)</dt>
 
@@ -2006,61 +1963,61 @@ function mediaStream(c,x,y,vid) {
      <dd>The ICE Agent has finished checking all candidates and no connection
      was worked.</dd>
 
- <dt>const unsigned short ICE_CLOSED = 00x700</dt>
+ <dt>const unsigned short ICE_CLOSED = 0x700</dt>
  <dd>The ICE Agent is terminating and will no longer repined to STUN
  connectivity checks.</dd>
 
     <dt>readonly attribute unsigned short iceState</dt>
    <dd>
       <p>The <dfn id='dom-peerconnection-icestate' title=
-      'dom-PeerConnection-iceState'><code title="">iceState</code></dfn> attribute
+      'dom-PeerConnection-iceState'><code>iceState</code></dfn> attribute
       must return the state of the <code><a
    href="#peerconnection">PeerConnection</a></code> ICE Agent 
       <a href="#peerconnection-ice-state"><code>PeerConnection</code> ICE
       state</a>, represented by a number from the following list:</p>
 
       <dl>
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-NEW'><a href="#dom-peerconnection-new">NEW</a></code>
         (0)</dt>
 
         <dd>The object was just created, and no networking has yet occurred.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-GATHERING'><a href=
         "#dom-peerconnection-negotiating">ICE_GATHERING</a></code> (0x100)</dt>
 
         <dd>The ICE Agent is attempting to establish a gather addresses.</dd>
 
-         <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+         <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-ICE_WAITING'><a href=
         "#dom-peerconnection-negotiating">ICE_WAITING</a></code> (0x200)</dt>
 
         <dd>The ICE Agent is waiting for candidates from the other side before it
         can start checking.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-CHECKING'><a href=
         "#dom-peerconnection-active">ICE_CHECKING</a></code> (0x300)</dt>
        <dd>The ICE Agent is checking candidates but has not yet found a connection.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-CONNECTED'><a href=
         "#dom-peerconnection-closed">ICE_CONNECTED</a></code> (0x400)</dt>
          <dd>The ICE Agent has found a connection but is still checking other
         candidates to see if there is a better connection.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-COMPLETED'><a href=
         "#dom-peerconnection-closed">ICE_COMPLETED</a></code> (0x500)</dt>
         <dd>The ICE Agent has finished checking and found a connection.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-ICE_FAILED'><a href=
         "#dom-peerconnection-closed">ICE_FAILED</a></code> (0x600)</dt>
         <dd>The ICE Agent is finished checking all candidates and failed to find a connection.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-CLOSED'><a href=
         "#dom-peerconnection-closed">ICE_CLOSED</a></code> (0x700)</dt>
         <dd>The ICE Agent has shut down and is no longer responding to STUN requests.</dd>
@@ -2084,32 +2041,32 @@ function mediaStream(c,x,y,vid) {
    <dt>readonly attribute unsigned short sdpState</dt>
 
    <dd> <p>The <dfn id='dom-peerconnection-sdpstate' title=
-   'dom-PeerConnection-sdpState'><code title="">sdpState</code></dfn> attribute
+   'dom-PeerConnection-sdpState'><code>sdpState</code></dfn> attribute
    must return the state of the <code><a
     href="#peerconnection">PeerConnection</a></code> SDP Agent , represented by
    a number from the following list:</p>
 
       <dl>
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-NEW'><a href="#dom-peerconnection-new">NEW</a></code>
         (0)</dt>
 
         <dd>The object was just created, and no networking has yet occurred.</dd>
 
-       <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+       <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-SDP_IDLE'><a href=
         "#dom-peerconnection-negotiating">SDP_IDLE</a></code> (0x1000)</dt>
 
         <dd>At least one SDP offer or answer has been exchange and the SDP Agent
         is ready to send an SDP offer or receive an SDP answer.</dd>
 
-         <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+         <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-SDP_WAITING'><a href=
         "#dom-peerconnection-negotiating">SDP_WAITING</a></code> (0x2000)</dt>
 
         <dd>The SDP Agent has sent and offer and is waiting for a answer.</dd>
 
-        <dt><code><a href="#peerconnection">PeerConnection</a></code> . <code title=
+        <dt><code><a>PeerConnection</a></code> . <code title=
         'dom-PeerConnection-SDP_GLARE'><a href=
         "#dom-peerconnection-active">SDP_GLARE</a></code> (0x3000)</dt>
 
@@ -2121,7 +2078,7 @@ function mediaStream(c,x,y,vid) {
 
 
     <!--
-    <dt>void send (in DOMString text)</dt>
+    <dt>void send (DOMString text)</dt>
 
     <dd>
       <p>Attempts to send the given text to the remote peer. This uses UDP, which is
@@ -2131,24 +2088,24 @@ function mediaStream(c,x,y,vid) {
       <p>When a message sent in this manner from the other peer is received, a
       <code title='event-MediaStream-message'><a href=
       "#event-mediastream-message">message</a></code> event is fired at the
-      <code><a href="#peerconnection">PeerConnection</a></code> object.</p>
+      <code><a>PeerConnection</a></code> object.</p>
 
-      <p>The maximum length of <var title="">text</var> is 504 bytes after encoding the
+      <p>The maximum length of <var>text</var> is 504 bytes after encoding the
       string as UTF-8; attempting to send a payload greater than 504 bytes results in an
       <code>INVALID_ACCESS_ERR</code> exception.</p>
 
       <p>When the <dfn id='dom-peerconnection-send' title=
-      'dom-PeerConnection-send'><code title="">send()</code></dfn> method is invoked, the
+      'dom-PeerConnection-send'><code>send()</code></dfn> method is invoked, the
       user agent must run the following steps:</p>
 
       <ol>
 
         <li>
-          <p>Let <var title="">message</var> be the method's first argument.</p>
+          <p>Let <var>message</var> be the method's first argument.</p>
         </li>
 
         <li>
-          <p>If the <code><a href="#peerconnection">PeerConnection</a></code> object's
+          <p>If the <code><a>PeerConnection</a></code> object's
           <a href="#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), throw an
@@ -2156,16 +2113,16 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>Let <var title="">data</var> be <var title="">message</var> encoded as
+          <p>Let <var>data</var> be <var>message</var> encoded as
           UTF-8. [[!UTF-8]]</p>
         </li>
 
         <li>
-          <p>If <var title="">data</var> is longer than 504 bytes, throw an
+          <p>If <var>data</var> is longer than 504 bytes, throw an
           <code>INVALID_ACCESS_ERR</code> exception and abort these steps.</p>
         </li>
        <li>
-          <p>If the <code><a href="#peerconnection">PeerConnection</a></code>'s <a href=
+          <p>If the <code><a>PeerConnection</a></code>'s <a href=
           "#peerconnection-data-udp-media-stream"><code>PeerConnection</code> data UDP
           media stream</a> is not an <a href="#active-data-udp-media-stream">active data
           UDP media stream</a>, abort these steps. No message is sent.</p>
@@ -2179,15 +2136,15 @@ function mediaStream(c,x,y,vid) {
 
         <li>
           <p><a href="#transmit-a-data-packet-to-a-peer">Transmit a data packet to a
-          peer</a> using the <code><a href="#peerconnection">PeerConnection</a></code>'s
+          peer</a> using the <code><a>PeerConnection</a></code>'s
           <a href="#peerconnection-data-udp-media-stream"><code>PeerConnection</code>
-          data UDP media stream</a> with <var title="">data</var> as the message.</p>
+          data UDP media stream</a> with <var>data</var> as the message.</p>
         </li>
       </ol>
     </dd>
 -->
     
-    <dt>void addStream (in MediaStream stream, in MediaStreamHints hints)</dt>
+    <dt>void addStream (MediaStream stream, MediaStreamHints hints)</dt>
 
     <dd>
       <p>Attempts to starting sending the given stream to the remote peer.
@@ -2197,23 +2154,23 @@ function mediaStream(c,x,y,vid) {
       <p>When the other peer starts sending a stream in this manner, an <code title=
       'event-MediaStream-addstream'><a href=
       "#event-mediastream-addstream">addstream</a></code> event is fired at the
-      <code><a href="#peerconnection">PeerConnection</a></code> object.</p><!-- </ol> -->
+      <code><a>PeerConnection</a></code> object.</p><!-- </ol> -->
 
       <p>When the <dfn id='dom-peerconnection-addstream' title=
-      'dom-PeerConnection-addStream'><code title="">addStream()</code></dfn> method is
+      'dom-PeerConnection-addStream'><code>addStream()</code></dfn> method is
       invoked, the user agent must run the following steps:</p>
 
       <ol>
         <li>
-          <p>Let <var title="">stream</var> be the method's first argument.</p>
+          <p>Let <var>stream</var> be the method's first argument.</p>
         </li>
 
         <li>
-          <p>Let <var title="">hints</var> be the method's second argument.</p>
+          <p>Let <var>hints</var> be the method's second argument.</p>
         </li>
 
         <li>
-          <p>If the <code><a href="#peerconnection">PeerConnection</a></code> object's
+          <p>If the <code><a>PeerConnection</a></code> object's
           <a href="#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), throw an
@@ -2221,16 +2178,14 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>If <var title="">stream</var> is already in the <code><a href=
-          "#peerconnection">PeerConnection</a></code> object's <code title=
+          <p>If <var>stream</var> is already in the <code><a>PeerConnection</a></code> object's <code title=
           'dom-PeerConnection-localStreams'><a href=
           "#dom-peerconnection-localstreams">localStreams</a></code> object, then abort
           these steps.</p>
         </li>
 
         <li>
-          <p>Add <var title="">stream</var> to the end of the <code><a href=
-          "#peerconnection">PeerConnection</a></code> object's <code title=
+          <p>Add <var>stream</var> to the end of the <code><a>PeerConnection</a></code> object's <code title=
           'dom-PeerConnection-localStreams'><a href=
           "#dom-peerconnection-localstreams">localStreams</a></code> object.</p>
         </li>
@@ -2240,20 +2195,20 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>Parse the <var title="">hints</var> provided by the application
+          <p>Parse the <var>hints</var> provided by the application
           and apply them to the MediaStream, if possible.
           </p>
         </li>
         <li>
-          <p>Have the <code><a href="#peerconnection">PeerConnection</a></code> add a
-          media stream for <var title="">stream</var> the next time the user agent
+          <p>Have the <code><a>PeerConnection</a></code> add a
+          media stream for <var>stream</var> the next time the user agent
           <span title="provide a stable state">provides a stable state</span>. Any other
           pending stream additions and removals must be processed at the same time.</p>
         </li>
       </ol>
     </dd>
 
-    <dt>void removeStream (in MediaStream stream)</dt>
+    <dt>void removeStream (MediaStream stream)</dt>
 
     <dd>
       <p>Stops sending the given stream to the remote peer.</p>
@@ -2261,19 +2216,19 @@ function mediaStream(c,x,y,vid) {
       <p>When the other peer stops sending a stream in this manner, a <code title=
       'event-MediaStream-removestream'><a href=
       "#event-mediastream-removestream">removestream</a></code> event is fired at the
-      <code><a href="#peerconnection">PeerConnection</a></code> object.</p>
+      <code><a>PeerConnection</a></code> object.</p>
 
       <p>When the <dfn id='dom-peerconnection-removestream' title=
-      'dom-PeerConnection-removeStream'><code title="">removeStream()</code></dfn> method
+      'dom-PeerConnection-removeStream'><code>removeStream()</code></dfn> method
       is invoked, the user agent must run the following steps:</p>
 
       <ol>
         <li>
-          <p>Let <var title="">stream</var> be the method's argument.</p>
+          <p>Let <var>stream</var> be the method's argument.</p>
         </li>
 
         <li>
-          <p>If the <code><a href="#peerconnection">PeerConnection</a></code> object's
+          <p>If the <code><a>PeerConnection</a></code> object's
           <a href="#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), throw an
@@ -2281,16 +2236,14 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>If <var title="">stream</var> is not in the <code><a href=
-          "#peerconnection">PeerConnection</a></code> object's <code title=
+          <p>If <var>stream</var> is not in the <code><a>PeerConnection</a></code> object's <code title=
           'dom-PeerConnection-localStreams'><a href=
           "#dom-peerconnection-localstreams">localStreams</a></code> object, then abort
           these steps.</p>
         </li>
 
         <li>
-          <p>Remove <var title="">stream</var> from the <code><a href=
-          "#peerconnection">PeerConnection</a></code> object's <code title=
+          <p>Remove <var>stream</var> from the <code><a>PeerConnection</a></code> object's <code title=
           'dom-PeerConnection-localStreams'><a href=
           "#dom-peerconnection-localstreams">localStreams</a></code> object.</p>
         </li>
@@ -2300,8 +2253,8 @@ function mediaStream(c,x,y,vid) {
         </li>
 
         <li>
-          <p>Have the <code><a href="#peerconnection">PeerConnection</a></code>remove the
-          media stream for <var title="">stream</var> the next time the user agent
+          <p>Have the <code><a>PeerConnection</a></code>remove the
+          media stream for <var>stream</var> the next time the user agent
           <span title="provide a stable state">provides a stable state</span>. Any other
           pending stream additions and removals must be processed at the same time.</p>
         </li><!-- section 9.1.1.2 -->
@@ -2316,9 +2269,8 @@ function mediaStream(c,x,y,vid) {
       'dom-PeerConnection-addStream'><a href=
       "#dom-peerconnection-addstream">addStream()</a></code>).</p>
 
-      <p>Specifically, it must return the read-only <code><a href=
-      "#mediastream">MediaStream</a></code> array that the attribute was set to when the
-      <code><a href="#peerconnection">PeerConnection</a></code>'s constructor ran.</p>
+      <p>Specifically, it must return the read-only <code><a>MediaStream</a></code> array that the attribute was set to when the
+      <code><a>PeerConnection</a></code>'s constructor ran.</p>
     </dd>
 
     <dt>readonly attribute MediaStream[] remoteStreams</dt>
@@ -2327,9 +2279,8 @@ function mediaStream(c,x,y,vid) {
       <p>Returns a live array containing the streams that the user agent is currently
       receiving from the remote peer.</p>
 
-      <p>Specifically, it must return the read-only <code><a href=
-      "#mediastream">MediaStream</a></code> array that the attribute was set to when the
-      <code><a href="#peerconnection">PeerConnection</a></code>'s constructor ran.</p>
+      <p>Specifically, it must return the read-only <code><a>MediaStream</a></code> array that the attribute was set to when the
+      <code><a>PeerConnection</a></code>'s constructor ran.</p>
 
       <p>This array is updated when <code title='event-MediaStream-addstream'><a href=
       "#event-mediastream-addstream">addstream</a></code> and <code title=
@@ -2341,12 +2292,12 @@ function mediaStream(c,x,y,vid) {
 
     <dd>
       <p>When the <dfn id='dom-peerconnection-close' title=
-      'dom-PeerConnection-close'><code title="">close()</code></dfn> method is invoked,
+      'dom-PeerConnection-close'><code>close()</code></dfn> method is invoked,
       the user agent must run the following steps:</p>
 
       <ol>
         <li>
-          <p>If the <code><a href="#peerconnection">PeerConnection</a></code> object's
+          <p>If the <code><a>PeerConnection</a></code> object's
           <a href="#peerconnection-readiness-state"><code>PeerConnection</code> readiness
           state</a> is <code title='dom-PeerConnection-CLOSED'><a href=
           "#dom-peerconnection-closed">CLOSED</a></code> (3), throw an
@@ -2383,7 +2334,7 @@ function mediaStream(c,x,y,vid) {
     <dd>This event handler, of <span title="event handler event type">event handler event
     type</span> <code title='event-MediaStream-connecting'><a href=
     "#event-mediastream-connecting">connecting</a></code>, must be supported by all
-    objects implementing the <code><a href="#peerconnection">PeerConnection</a></code>
+    objects implementing the <code><a>PeerConnection</a></code>
     interface.</dd>
 
     <dt>attribute Function? onopen</dt>
@@ -2391,7 +2342,7 @@ function mediaStream(c,x,y,vid) {
     <dd>This event handler, of <span title="event handler event type">event handler event
     type</span> <code title='event-MediaStream-open'><a href=
     "#event-mediastream-open">open</a></code>, must be supported by all objects
-    implementing the <code><a href="#peerconnection">PeerConnection</a></code>
+    implementing the <code><a>PeerConnection</a></code>
     interface.</dd>
 
         <dt>attribute Function? onstatechange</dt>
@@ -2399,7 +2350,7 @@ function mediaStream(c,x,y,vid) {
     <dd>This event handler, of <span title="event handler event type">event handler event
     type</span> <code title='event-MediaStream-open'><a href=
     "#event-mediastream-open">open</a></code>, must be supported by all objects
-    implementing the <code><a href="#peerconnection">PeerConnection</a></code>
+    implementing the <code><a>PeerConnection</a></code>
     interface. It is called any time the readyState, iceState, or sdpState
     changes. </dd>
 
@@ -2411,7 +2362,7 @@ function mediaStream(c,x,y,vid) {
     <dd>This event handler, of <span title="event handler event type">event handler event
     type</span> <code title='event-MediaStream-message'><a href=
     "#event-mediastream-message">message</a></code>, must be supported by all objects
-    implementing the <code><a href="#peerconnection">PeerConnection</a></code>
+    implementing the <code><a>PeerConnection</a></code>
     interface.</dd>
     -->
     
@@ -2420,7 +2371,7 @@ function mediaStream(c,x,y,vid) {
     <dd>This event handler, of <span title="event handler event type">event handler event
     type</span> <code title='event-MediaStream-addstream'><a href=
     "#event-mediastream-addstream">addstream</a></code>, must be supported by all objects
-    implementing the <code><a href="#peerconnection">PeerConnection</a></code>
+    implementing the <code><a>PeerConnection</a></code>
     interface.</dd>
 
     <dt>attribute Function? onremovestream</dt>
@@ -2428,7 +2379,7 @@ function mediaStream(c,x,y,vid) {
     <dd>This event handler, of <span title="event handler event type">event handler event
     type</span> <code title='event-MediaStream-removestream'><a href=
     "#event-mediastream-removestream">removestream</a></code>, must be supported by all
-    objects implementing the <code><a href="#peerconnection">PeerConnection</a></code>
+    objects implementing the <code><a>PeerConnection</a></code>
     interface.</dd>
   </dl>
 
@@ -2438,9 +2389,9 @@ function mediaStream(c,x,y,vid) {
   <section>
   <h3>SignalingCallback</h3>
 
-  <dl title='[Callback=FunctionOnly, NoInterfaceObject] interface SignalingCallback'
+  <dl title='[Callback, NoInterfaceObject] interface SignalingCallback'
   class='idl'>
-    <dt>void handleEvent (in DOMString message, in PeerConnection source)</dt>
+    <dt>void handleEvent (DOMString message, PeerConnection source)</dt>
 
     <dd>Def TBD</dd>
   </dl>
@@ -2449,14 +2400,14 @@ function mediaStream(c,x,y,vid) {
   <section>
   <h3>Examples</h3>
 
-  <div class='example'>
+  <div>
     <p>When two peers decide they are going to set up a connection to each other, they
     both go through these steps. The STUN/TURN server configuration describes a server
     they can use to get things like their public IP address or to set up NAT traversal.
     They also have to send data for the signaling channel to each other using the same
     out-of-band mechanism they used to establish that they were going to communicate in
     the first place.</p>
-    <pre>
+    <pre  class='example sh_javascript'>
 // the first argument describes the STUN/TURN server configuration
 var local = new PeerConnection('TURNS example.net', sendSignalingChannel);
 local.signalingChannel(...); // if we have a message from the other side, pass it along here
@@ -2494,8 +2445,7 @@ local.onaddstream = function (event) {
   <h2>Garbage collection</h2>
 
   <p>A <code>Window</code> object <dfn id='concept-peerconnection-owner' title=
-  'concept-PeerConnection-owner'>has a strong reference</dfn> to any <code><a href=
-  "#peerconnection">PeerConnection</a></code> objects created from the constructor whose
+  'concept-PeerConnection-owner'>has a strong reference</dfn> to any <code><a>PeerConnection</a></code> objects created from the constructor whose
   global object is that <code>Window</code> object.</p><!-- we
   could be less strict here, e.g. dropping the reference when there's
   no way for an event to be fired because there's no event handlers
@@ -2513,18 +2463,16 @@ local.onaddstream = function (event) {
   <p>The <code title='event-MediaStream-addstream'><a href=
   "#event-mediastream-addstream">addstream</a></code> and <code title=
   'event-MediaStream-removestream'><a href=
-  "#event-mediastream-removestream">removestream</a></code> events use the <code><a href=
-  "#mediastreamevent">MediaStreamEvent</a></code> interface:</p>
+  "#event-mediastream-removestream">removestream</a></code> events use the <code><a>MediaStreamEvent</a></code> interface:</p>
 
   <section>
   <h3>MediaStreamEvent</h3>
 
   <p><dfn id='fire-a-stream-event' title="fire a stream event">Firing a stream event
-  named <var title="">e</var></dfn> with a <code><a href=
-  "#mediastream">MediaStream</a></code> <var title="">stream</var> means that an event
-  with the name <var title="">e</var>, which does not bubble (except where otherwise
+  named <var>e</var></dfn> with a <code><a>MediaStream</a></code> <var>stream</var> means that an event
+  with the name <var>e</var>, which does not bubble (except where otherwise
   stated) and is not cancelable (except where otherwise stated), and which uses the
-  <code><a href="#mediastreamevent">MediaStreamEvent</a></code> interface with the
+  <code><a>MediaStreamEvent</a></code> interface with the
   <code title='dom-MediaStreamEvent-stream'><a href=
   "#dom-mediastreamevent-stream">stream</a></code> attribute set to <var title=
   "">stream</var>, must be created and dispatched at the given target.</p>
@@ -2535,7 +2483,7 @@ local.onaddstream = function (event) {
     <dd>
       <p>The <dfn id='dom-mediastreamevent-stream' title=
       'dom-MediaStreamEvent-stream'><code>stream</code></dfn> attribute represents the
-      <code><a href="#mediastream">MediaStream</a></code> object associated with the
+      <code><a>MediaStream</a></code> object associated with the
       event.</p>
     </dd>
 
@@ -2554,7 +2502,7 @@ local.onaddstream = function (event) {
   <section class="informative">
   <h2>Event summary</h2>
 
-  <p>The following event fires on <code><a href="#mediastream">MediaStream</a></code>
+  <p>The following event fires on <code><a>MediaStream</a></code>
   objects:</p>
 
   <table>
@@ -2573,7 +2521,7 @@ local.onaddstream = function (event) {
 
         <td><code>Event</code></td>
 
-        <td>The <code><a href="#mediastream">MediaStream</a></code> object will no longer
+        <td>The <code><a>MediaStream</a></code> object will no longer
         stream any data, either because the user revoked the permissions, or because the
         source device has been ejected, or because the remote peer stopped sending data,
         or because the <code title='dom-MediaStream-stop'><a href=
@@ -2582,8 +2530,7 @@ local.onaddstream = function (event) {
     </tbody>
   </table>
 
-  <p>The following events fire on <code><a href=
-  "#peerconnection">PeerConnection</a></code> objects:</p>
+  <p>The following events fire on <code><a>PeerConnection</a></code> objects:</p>
 
   <table>
     <tr>
@@ -2602,8 +2549,7 @@ local.onaddstream = function (event) {
         <td><code>Event</code></td>
 
         <td>The ICE Agent has begun negotiating with the peer. This can happen multiple
-        times during the lifetime of the <code><a href=
-        "#peerconnection">PeerConnection</a></code> object.</td>
+        times during the lifetime of the <code><a>PeerConnection</a></code> object.</td>
       </tr>
 
       <tr>
@@ -2641,7 +2587,7 @@ local.onaddstream = function (event) {
         <td><dfn id='event-mediastream-addstream' title=
         'event-MediaStream-addstream'><code>addstream</code></dfn></td>
 
-        <td><code><a href="#mediastreamevent">MediaStreamEvent</a></code></td>
+        <td><code><a>MediaStreamEvent</a></code></td>
 
         <td>A new stream has been added to the <code title=
         'dom-PeerConnection-remoteStreams'><a href=
@@ -2652,7 +2598,7 @@ local.onaddstream = function (event) {
         <td><dfn id='event-mediastream-removestream' title=
         'event-MediaStream-removestream'><code>removestream</code></dfn></td>
 
-        <td><code><a href="#mediastreamevent">MediaStreamEvent</a></code></td>
+        <td><code><a>MediaStreamEvent</a></code></td>
 
         <td>A stream has been removed from the <code title=
         'dom-PeerConnection-remoteStreams'><a href=
