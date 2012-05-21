@@ -40,8 +40,15 @@
       respectively in the ../editor/. W3C directory. 
   -->
 
+<<<<<<< HEAD
   <script src='http://dev.w3.org/2009/dap/ReSpec.js/js/respec.js' class=
   'remove' type="text/javascript">
+=======
+ <script class="remove" src="ReSpec.js/js/respec.js" type="text/javascript">
+      <!-- keep this comment -->
+    </script>
+
+>>>>>>> master
 </script>
   <script class='remove' type="text/javascript">
     var respecConfig = {
@@ -906,7 +913,11 @@
       <h2>NavigatorUserMedia</h2>
 
       <dl title='[NoInterfaceObject] interface NavigatorUserMedia' class='idl'>
+<<<<<<< HEAD
         <dt>void getUserMedia(MediaStreamOptions? options,
+=======
+        <dt>void getUserMedia(MediaStreamConstraints? constraints,
+>>>>>>> master
         NavigatorUserMediaSuccessCallback? successCallback, optional
         NavigatorUserMediaErrorCallback? errorCallback)</dt>
 
@@ -914,8 +925,13 @@
           <p>Prompts the user for permission to use their Web cam or other
           video or audio input.</p>
 
+<<<<<<< HEAD
           <p>The <var>options</var> argument is an object of type
           <code><a>MediaStreamOptions</a></code>.</p>
+=======
+          <p>The <var>constraints</var> argument is an object of type
+          <code><a>MediaStreamConstraints</a></code>.</p>
+>>>>>>> master
 
           <p>If the user accepts, the <var>successCallback</var> is invoked,
           with a suitable <code><a href=
@@ -931,7 +947,11 @@
 
           <ol>
             <li>
+<<<<<<< HEAD
               <p>Let <var>options</var> be the method's first argument.</p>
+=======
+              <p>Let <var>constraints</var> be the method's first argument.</p>
+>>>>>>> master
             </li>
 
             <li>
@@ -945,12 +965,27 @@
             </li>
 
             <li>
+<<<<<<< HEAD
+=======
+              <p>Let <var>requestedMediaTypes</var> be the set of media types in <var>constraints</var> (at the time of writing, only "audio" and "video" are available).</p>
+            </li>
+
+            <li>
+              <p>Let <var>finalSet</var> be an (initially) empty set.</p>
+            </li>
+
+            <li>
+>>>>>>> master
               <p>If <var>successCallback</var> is null, abort these steps.</p>
             </li><!-- we could throw an exception instead (that's
    why the method doesn't return until later: so that we can add an
    exception here, or for /options/ below, without changing the
    algorithm) -->
+<<<<<<< HEAD
 
+=======
+<!--
+>>>>>>> master
             <li>
               <p>For each member of the <code><a>MediaStreamOptions</a></code>
               dictionary create a local representation and set it to false.</p>
@@ -968,6 +1003,60 @@
               to true, then throw a <code>NOT_SUPPORTED_ERR</code> exception
               and abort these steps.</p>
             </li>
+<<<<<<< HEAD
+=======
+-->
+
+            <li>
+	      <p>For each media type in <var>requestedMediaTypes</var>,</p>
+	      <ol>
+		<li>
+		  <p>Let <var>candidateSet</var> be all possible tracks of the current media type that the browser could return.</p>
+
+		<li>
+		  <p>For each constraint key-value pair in the "mandatory" dictionary,</p>
+
+		  <ol>
+		    <li>
+		      <p>If the constraint is not supported by the browser, call the <var>errorCallback</var> with a <code>NOT_SUPPORTED_ERR</code> error naming the constraint and abort these steps.</p>
+		    </li>
+
+		    <li>
+		      <p>Remove from the <var>candidateSet</var> any track that cannot satisfy the value given for the constraint.</p>
+		    </li>
+
+		    <li>
+		      <p>If the <var>candidateSet</var> no longer contains at least one track, call the <var>errorCallback</var> with a <code>MANDATORY_UNSATISFIED_ERR</code> error naming the constraint and abort these steps. Otherwise, continue with the next mandatory constraint.</p>
+		    </li>
+		  </ol>
+		</li>
+		<li>
+		  <p>Let the <var>secondPassSet</var> be the current contents of the <var>candidateSet</var>.</p>
+                </li>
+
+		<li>
+		  <p>For each constraint key-value pair in the "optional" sequence of the <var>constraints</var> that are for the current media type, in order,
+		    <ol>
+		      <li>
+			<p>If the constraint is not supported by the browser, skip it and continue with the next constraint.</p>
+		      </li>
+
+		      <li>
+			<p>Remove from the <var>secondPassSet</var> any tracks that cannot satisfy the value given for the constraint.</p>
+		      </li>
+		      
+		      <li>
+			<p>If the <var>secondPassSet</var> is now empty, let the <var>secondPassSet</var> be the current contents of the <var>candidateSet</var>.  Otherwise, let the <var>candidateSet</var> be the current contents of the <var>secondPassSet</var>.</p>
+		      </li>
+		    </ol>
+                </li>
+
+		<li>
+		  <p>Select one track from the <var>candidateSet</var> to add to the <var>finalSet</var>.  The decision of which track to choose from the <var>candidateSet</var> is completely up to the browser.  Unless and until a new set of constraints is provided, the browser MAY change its choice of track at any point, provided that 1) the new choice does not violate the given user permission, and 2) it notifies the application code by raising the ******TBD****** event.  It may wish to do this, for example, if the user interface or network congestion changes.  Note that no such change will have an effect on the presence or absence of each type of track, merely the contents.</p>
+		</li>
+	      </ol>
+            </li>
+>>>>>>> master
 
             <li>
               <p>Return, and run the remaining steps asynchronously.</p>
@@ -975,12 +1064,18 @@
 
             <li>
               <p>Optionally, e.g. based on a previously-established user
+<<<<<<< HEAD
               preference, for security reasons, or due to platform limitations,
               jump to the step labeled <em>failure</em> below.</p>
+=======
+		preference, for security reasons, or due to platform limitations,
+		jump to the step labeled <em>failure</em> below.</p>
+>>>>>>> master
             </li>
 
             <li>
               <p>Prompt the user in a user-agent-specific manner for permission
+<<<<<<< HEAD
               to provide the entry script's origin with a <code><a href=
               "webrtc.html#localmediastream">LocalMediaStream</a></code> object
               [[!WEBRTC10]] representing a media stream.</p>
@@ -993,6 +1088,13 @@
               local representation of the
               <code><a>MediaStreamOptions</a></code> dictionary members that is
               not set to true.</p>
+=======
+		to provide the entry script's origin with a <code><a href=
+                "webrtc.html#localmediastream">LocalMediaStream</a></code> object
+                [[!WEBRTC10]] representing a media stream.</p>
+
+              <p>The provided media MUST include precisely the tracks in the <var>finalSet</var>.</p>
+>>>>>>> master
 
               <p>User agents are encouraged to default to using the user's
               primary or system default camera and/or microphone (as
@@ -1000,11 +1102,14 @@
               users to use any media source, including pre-recorded media
               files.</p>
 
+<<<<<<< HEAD
               <p>User agents MAY wish to offer the user more control over the
               provided media. For example, a user agent could offer to enable a
               camera light or flash, or to change settings such as the frame
               rate or shutter speed.</p>
 
+=======
+>>>>>>> master
               <p>If the user grants permission to use local recording devices,
               user agents are encouraged to include a prominent indicator that
               the devices are "hot" (i.e. an "on-air" or "recording"
@@ -1061,17 +1166,53 @@
     </section>
 
     <section>
+<<<<<<< HEAD
       <h2>MediaStreamOptions</h2>
 
       <dl title='dictionary MediaStreamOptions' class='idl'>
         <dt>boolean audio</dt>
+=======
+      <h2>MediaStreamConstraints</h2>
+
+      <dl title='dictionary MediaStreamConstraints' class='idl'>
+<!--        <dt>boolean audio</dt>
+>>>>>>> master
 
         <dd>Set to true if an audio track is requested, default is false</dd>
 
         <dt>boolean video</dt>
 
         <dd>Set to true if a video track is requested, default is false</dd>
+<<<<<<< HEAD
       </dl>
+=======
+-->
+        <dt>dictionary MediaTrackConstraints? video = null;</dt>
+        <dd>**** Provide def of video constraints here ****</dd>
+        <dt>dictionary MediaTrackConstraints? audio = null;</dt>
+        <dd>**** Provide def of audio constraints here ****</dd>
+      </dl>
+
+      <dl title='dictionary MediaTrackConstraints' class='idl'>
+        <dt>dictionary MediaTrackConstraintSet? mandatory = null;</dt>
+        <dd>**** Provide def of mandatory here ****</dd>
+        <dt>sequence&lt;MediaTrackConstraint&gt;? optional = null;</dt>
+        <dd>**** Provide def of optional here ****</dd>
+      </dl>
+
+<p>A MediaTrackConstraintSet is a dictionary containing one or more
+key-value pairs, where each key MUST be a valid registered constraint
+name in the IANA-hosted RTCWeb Media Constraints registry
+[[!RTCWEB-CONSTRAINTS]] and its value SHOULD be as defined in the
+associated reference[s] given in the registry.</p>
+
+<p>A MediaTrackConstraint is a dictionary containing exactly one
+key-value pair, where the key MUST be a valid registered constraint
+name in the IANA-hosted RTCWeb Media Constraints registry
+[[!RTCWEB-CONSTRAINTS]] and the value SHOULD be as defined in the
+associated reference[s] given in the registry.</p>
+
+>>>>>>> master
     </section>
 
     <section>
@@ -1257,6 +1398,67 @@
     <h2>Event summary</h2>
   </section>
 
+<<<<<<< HEAD
+=======
+    <section>
+    <h2 id="sec-iana">IANA Registrations</h2>
+    
+    <section>
+    <h2 id="sec-constraints">Constraints Registrations</h2>
+    
+    <p> IANA is requested to register the following constraints as
+    specified in [[!RTCWEB-CONSTRAINTS]]: </p>
+    
+    <dl>
+      
+      <dt> EchoCancelation </dt>
+      
+      <dd> <p> This is a enum type constraint that can take the values "true"
+        and "false". The default is a non mandatory "true". </p>
+        
+        <p> When one or more audio streams is being played in the proceses of
+        varios microphones, it is often desirable to attempt to remove the sound
+        being played from the input signals recorded by the microphones. This is
+        referred to echo cancelation. There are cases where it is not needed and
+        it is desirable to turn it off so that no audio artifacts are
+        introduced. This constraint allows the application to control this
+        behavior. </p>
+      </dd>
+
+      <dt> CaptureAudio </dt>
+      
+      <dd> <p> This is a enum type constraint that can take the values "true"
+        and "false". The default is a non mandatory "true". </p>
+          
+        <p> Indicates that application would like to capture audio input from a
+        microphone. </p>
+      </dd>
+
+      <dt> CaptureVideo </dt>
+      
+      <dd> <p> This is a enum type constraint that can take the values "true"
+        and "false". The default is a non mandatory "true". </p>
+          
+        <p> Indicates that application would like to capture video input from a
+        camera. </p>
+      </dd>
+
+      <dt> CaptureImage </dt>
+      
+      <dd> <p> This is a enum type constraint that can take the values "true"
+        and "false". The default is a non mandatory "true". </p>
+          
+        <p> Indicates that application would like to capture an single image from a
+        camera. </p>
+      </dd>
+
+    </dl>
+    
+    </section>
+    </section>
+        
+    
+>>>>>>> master
   <section>
     <h2>Change Log</h2>
 
