@@ -3935,6 +3935,35 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
         </dd>
 
 
+        <dt> AudioEncodingComplexity </dt>
+        <dd>
+
+          <p>This is an integer type constraint that can take the values 1 to
+          10. The default is a non mandatory "5". Open Issue: IANA Constraints
+          registry does not seem to work for this.  </p>
+
+          <p>This indicates the relative amount of CPU that should be used by
+          the audio encoder. 10 means more CPU. 1 means less. What this does
+          will be dependent on the implementations and the codec chosen. If you
+          feel you need to adjust this, it probably won't do what you want. </p>
+
+        </dd>
+
+             <dt> VideoEncodingComplexity </dt>
+        <dd>
+
+          <p>This is an integer type constraint that can take the values 1 to
+          10. The default is a non mandatory "5". Open Issue: IANA Constraints
+          registry does not seem to work for this.  </p>
+
+          <p>This indicates the relative amount of CPU that should be used by
+          the video encoder. 10 means more CPU. 1 means less. What this does
+          will be dependent on the implementations and the codec chosen. If you
+          feel you need to adjust this, it might make some difference. </p>
+
+        </dd>
+        
+        
         <dt> ConstantBitRateAudio </dt>
         <dd>
 
