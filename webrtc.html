@@ -3930,7 +3930,9 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
           <p>This indicates that JavaScript can access the media content such as
           audio or video. The reason for defaulting to false is to make it
-          easier to detect an applications that changes it to true. </p>
+          easier to detect an applications that changes it to true. Browsers
+          MUST support this constraint and MUST implement the "false" option as
+          this is important for security. </p>
 
         </dd>
 
@@ -3984,7 +3986,8 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
           <p>This indicates if the audio and codecs should allow variable or
           constant bit rate audio encoding. Due to possible security concerns
           with variable bit rate audio, this defaults to using constant bit
-          rate. </p>
+          rate. Browsers MUST implement this constraints and MUST support a
+          constant bitrate option as this is important for security. </p>
 
         </dd>
 
