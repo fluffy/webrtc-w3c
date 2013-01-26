@@ -3786,11 +3786,11 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
       names here now are likely not quite right but they serve as a place
       holder.</p>
 
-      <p class="issue">ISSUE: there are multiple ways to add constraints. How
-      are multiple values reconciled?</p>
+      <p class="issue"> ISSUE: there are multiple ways to add constraints. How
+      are multiple values reconciled? </p>
 
       <p>The following new constraints are defined that can be used with an
-      <code>RTCPeerConnection</code> object:</p>
+      <code>RTCPeerConnection</code> object: </p>
 
       <dl>
         <dt>OfferToReceiveVideo</dt>
@@ -3874,6 +3874,23 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
           as DTLS-SRTP is in used, fingerprints will be sent regardless of the
           value of this constraint.</p>
         </dd>
+
+
+        <dt>UseRtpMUX</dt>
+
+        <dd>
+
+          <p>This is an enum type constraint that can take the values "true",
+          "false". The default is a non mandatory "true". </p>
+
+          <p>This indicates that a the RTP packets should all be multiplexed on
+          a single UDP port. </p>
+
+        </dd>
+
+
+
+        
       </dl>
 
       <p>TODO items - need to register with IANA.</p>
