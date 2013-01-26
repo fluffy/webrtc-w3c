@@ -3922,6 +3922,32 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
         </dd>
 
+        <dt> JavascriptMediaAccess </dt>
+        <dd>
+
+          <p>This is an enum type constraint that can take the values "true",
+          "false". The default is a mandatory "false". </p>
+
+          <p>This indicates that JavaScript can access the media content such as
+          audio or video. The reason for defaulting to false is to make it
+          easier to detect an applications that changes it to true. </p>
+
+        </dd>
+
+
+        <dt> ConstantBitRateAudio </dt>
+        <dd>
+
+          <p>This is an enum type constraint that can take the values "true",
+          "false". The default is a mandatory "true". </p>
+
+          <p>This indicates if the audio and codecs should allow variable or
+          constant bit rate audio encoding. Due to possible security concerns
+          with variable bit rate audio, this defaults to using constant bit
+          rate. </p>
+
+        </dd>
+
 
         <dt> MaxBandwidth </dt>
         <dd>
