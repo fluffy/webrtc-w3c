@@ -3877,7 +3877,6 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
 
         <dt>UseRtpMUX</dt>
-
         <dd>
 
           <p>This is an enum type constraint that can take the values "true",
@@ -3888,8 +3887,8 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
         </dd>
 
-    <dt>UseRtcpMUX</dt>
-
+        
+        <dt>UseRtcpMUX</dt>
         <dd>
 
           <p>This is an enum type constraint that can take the values "true",
@@ -3900,8 +3899,8 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
         </dd>
 
+        
         <dt>UseAVPF</dt>
-
         <dd>
 
           <p>This is an enum type constraint that can take the values "true",
@@ -3914,7 +3913,6 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
 
         <dt> UseRtpExtensions </dt>
-
         <dd>
 
           <p>This is an enum type constraint that can take the values "true",
@@ -3924,6 +3922,23 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
         </dd>
 
+
+        <dt> MaxBandwidth </dt>
+        <dd>
+
+          <p>This is an max type constraint that specifies the upper bound of
+          the bandwidth in kilobits per second. The default is a non mandatory infinity. </p>
+
+          <p> TODO - need to sort out if this limit is for PeerConnection, Stream, or Track. </p>
+
+        </dd>
+        
+        <dt> Send/Recv Resolutions, Aspects, and Framerates </dt>
+        <dd>
+
+          <p> TODO </p>
+
+        </dd>
       
       </dl>
 
