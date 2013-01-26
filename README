@@ -45,6 +45,8 @@ corresponding archive folders can be copied to editor/ in the W3C CVS.
 * Send an email to the corresponding lists to announce the new release (proposed
 template below).
 
+* on the master copy in github, start a new "Changes since YYYYMMDD" section in the Change log 
+
 Email template (use it if you like):
 --------------------------------------------------------------------------------
 Hi

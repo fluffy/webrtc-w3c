@@ -3884,16 +3884,50 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
           "false". The default is a non mandatory "true". </p>
 
           <p>This indicates that a the RTP packets should all be multiplexed on
-          a single UDP port. </p>
+          the same UDP port. </p>
+
+        </dd>
+
+    <dt>UseRtcpMUX</dt>
+
+        <dd>
+
+          <p>This is an enum type constraint that can take the values "true",
+          "false". The default is a non mandatory "true". </p>
+
+          <p>This indicates that a the RTCP and RTP packets should all be multiplexed on
+          the same UDP port. </p>
+
+        </dd>
+
+        <dt>UseAVPF</dt>
+
+        <dd>
+
+          <p>This is an enum type constraint that can take the values "true",
+          "false". The default is a non mandatory "true". </p>
+
+          <p>This indicates that RTCP Feedback Capability Attribute mechanisms as
+          specified in RFC 4585 should be used. </p>
 
         </dd>
 
 
+        <dt> UseRtpExtensions </dt>
 
-        
+        <dd>
+
+          <p>This is an enum type constraint that can take the values "true",
+          "false". The default is a non mandatory "true". </p>
+
+          <p>This indicates that RTP header extensions can be used. </p>
+
+        </dd>
+
+      
       </dl>
 
-      <p>TODO items - need to register with IANA.</p>
+      <p>TODO: Need to create text in this specification to register all the above constraints with IANA.</p>
     </section>
   </section>
 
@@ -3903,10 +3937,21 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
     <p>This section will be removed before publication.</p>
     <!-- Why do the first two headings automatically convert to <h2>? -->
 
-    <h3>Changes since Dec 12, 2012</h3>
+      <h3>Changes since Jan 16, 2013</h3>
+      
+      <ol>
+        
+        <li> Added some constraints to match up with JSEP draft. </li>
+        
+      </ol>
+      
+      <h3>Changes since Dec 12, 2012</h3>
+      
+      <ol>
 
-    <ol>
-      <li>Changed AudioMediaStreamTrack to RTCDTMFSender and gave it its own section.  Updated text to reflect most recent agreements.  Also added examples section.</li>
+        <li>Changed AudioMediaStreamTrack to RTCDTMFSender and gave it its own
+        section.  Updated text to reflect most recent agreements.  Also added
+        examples section.</li>
 
       <li>Replaced the localStreams and remoteStreams attributes with functions
       returning sequences of MediaStream objects.</li>
