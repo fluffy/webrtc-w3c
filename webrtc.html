@@ -3934,7 +3934,18 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
         </dd>
 
+        <dt> AudioFrameSize </dt>
+        <dd>
 
+          <p>This is an max type constraint. The default is a non mandatory "20". </p>
+
+          <p>This indicates the desired size for RTP audio frames in mili
+          seconds. If you think you need to adjust this, it will probably reduce
+          your interoperability with other systems. </p>
+
+        </dd>
+
+        
         <dt> AudioEncodingComplexity </dt>
         <dd>
 
@@ -3949,7 +3960,7 @@ sender.insertDTMF(sender.toneBuffer + ‘6789’);
 
         </dd>
 
-             <dt> VideoEncodingComplexity </dt>
+        <dt> VideoEncodingComplexity </dt>
         <dd>
 
           <p>This is an integer type constraint that can take the values 1 to
