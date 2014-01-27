@@ -3073,6 +3073,188 @@ new AudioStreamTrack({
       </dl>
     </section>
 
+      <section>
+      <h2>Obtaining Screen Based Video</h2>
+
+
+      <p> The video source does not have to be a camera, it can be some visible
+      portion of the users screen. This is useful for varios screen sharing type
+      applications. This section decries the API for an applications to indicate
+      that it wishes to capture video from a canvas element, browser tab,
+      application, or whole desktop. Browsers are not required to implement any
+      of the elements described in this section to be WebRTC compliant
+      implementation but this section describes an optional API that can be
+      implement if appropriate for that device. There are significant security
+      concerns with capture of the users screen as discussed in
+      [[!RTCWEB-SECURITY-ARCH]] and [[!RTCWEB-SECURITY]]. Implementations need
+      to ensure they do provide adequate security as discussed later in this
+      section.  </p>
+
+      <p> Capture of screen video is controlled by a new constraint called
+      "mediaSource" which can take on the values "canvas", "tab", "window",
+      "application", or "screen". This constraint can be passed to the
+      <code><a>getUserMedia</a></code> call which can display a dialog that
+      allows the user to select the correct input as well as gather appropriate
+      permissions from the user. Typically the dialog would display show a list
+      of thumbnails of the video sources that were available and allow users to
+      pick the appropriate one. </p>
+
+      <p> The video generated MUST be from the portion of the screen belonging
+      to the item that was authorized and it MUST be visible. So if an
+      application is being shared, but the top right corner of the application
+      is covered by a window from some other application, that top right corner
+      needs to be replaced with grey in the video stream.  </p>
+      
+      <section>
+      <h3> Screen Based Video Constraints </h3>
+
+      <p class="note"> Open Issue: This is described as a constraint but it may get moved to
+      a setting. </p>
+
+        <table class="simple">
+        <thead>
+          <tr>
+            <th>Property Name</th>
+
+            <th>Values</th>
+
+            <th>Notes</th>
+          </tr>
+        </thead>
+
+        <tbody>
+             <tr id="def-constraint-mediaSource">
+            <td><dfn>mediaSource</dfn>
+            </td>
+
+            <td><code><a>MediaSourceEnum</a></code>
+            </td>
+
+            <td>The source of the video from the users screen. </td>
+          </tr>
+        </tbody>
+      </table>
+
+        <dl class="idl" title="enum MediaSourceEnum">
+
+        <dt>canvas</dt>
+        <dd>The source is a selected HTML canvas element.</dd>
+
+        <dt>tab</dt>
+        <dd>The source is a tab in the same browsers.</dd>
+
+        <dt>window</dt>
+        <dd>The source is a window in some application.</dd>
+
+        <dt>application</dt>
+        <dd>The source is all the windows for some application.</dd>
+
+         <dt>screen</dt>
+        <dd>The source is the whole screen of one of the users monitors.</dd>
+      </dl>
+
+      <p> The choice of source elements presented to the user for selection can
+      further be restricted by the additional constraints. </p>
+
+        <table class="simple">
+        <thead>
+          <tr>
+            <th>Property Name</th>
+
+            <th>Values</th>
+
+            <th>Notes</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+               <tr id="def-constraint-tabId">
+            <td><dfn>tabId</dfn>
+            </td>
+
+            <td><code><a>long</a></code>
+            </td>
+
+            <td> Identifier that specifies which tab to capture. </td>
+          </tr>
+
+               <tr id="def-constraint-canvasId">
+            <td><dfn>canvasId</dfn>
+            </td>
+
+            <td><code><a>long</a></code>
+            </td>
+
+            <td> Identifier that specifies which canvas element to capture. </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      
+      </section>
+
+        <section>
+      <h3> Security and Permissions </h3>
+  
+      <p> There are several security issues that need to be considered including
+      the issue of an "evil" web page requesting sharing of some tab then the
+      "evil" page managing to open another web page, such as a banking page,
+      inside that tab. The "evil" web page could then see information displayed
+      on the banking page. These attacks and others are described in more
+      detail in [[!RTCWEB-SECURITY]]. </p>
+
+      <p> The approach to securing types of sharing where the webpage could
+      impact the content is being shared is to require that web page
+      have a persistent permission should some install user experience where there
+      is a place to explain the risk to the user. The approach to sharing where
+      this is not possible is to each time getUserMedia is called, offer the
+      user a dialog where they choose the content they wish to share. This first
+      type is refered to "Application Permission" and the second is referred to as
+      "User Choice Permission". <p>
+
+      <table class="simple">
+        <thead>
+          
+          <tr>
+
+            <th>Shared</th>
+
+            <th>Permission</th>
+
+          </tr>
+          
+        </thead>
+        <tbody>
+          
+          <tr> <td> canvas </td> <td> Some canvas will allow getImageData to
+            access the pixels in the canvas. These types of canvas do not need
+            any additional permission. Other canvas requires Application
+            Permission to use this and if a specific canvasId is not provided,
+            they also needs User Choice Permission to select the tab.</td> </tr>
+              
+          <tr> <td> tab </td> <td> Requires Application Permission to use this
+            and if a specific tabId is not provided, they also needs User Choice
+            Permission to select the tab. </td> </tr>
+              
+          <tr> <td> window </td> <td> Needs User Choice Permission to select the
+            window. </td> </tr>
+              
+          <tr> <td> application </td> <td> Needs User Choice Permission to
+            select the application. </td> </tr>
+              
+          <tr> <td> screen </td> <td> Requires Application Permission to use
+            this as well as the User Choice Permission to select the screen to
+            share for multiscreen system and allow sharing to start for single
+            screen systems.  </td> </tr>
+              
+        </tbody>
+      </table>
+
+      </section>
+
+
+      </section>
 
     <section class="informative">
       <h2>Implementation Suggestions</h2>
