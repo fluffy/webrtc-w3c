@@ -2997,7 +2997,14 @@
       <section>
       <h2>Obtaining Screen Based Video</h2>
 
+<!-- notes Justin Comments
 
+don’t select canvas, instead use identifer for one in your orgin
+
+make sure share applciations can not share the browser 
+
+      -->
+      
       <p> The video source does not have to be a camera, it can be some visible
       portion of the users screen. This is useful for varios screen sharing type
       applications. This section describes the API for an applications to
@@ -3081,13 +3088,16 @@
         <dl class="idl" title="enum MediaSourceEnum">
 
         <dt>canvas</dt>
-        <dd>The source is a selected HTML canvas element.</dd>
+        <dd>The source is a selected HTML canvas element. In this case the
+        canvas to be shared MUST be in the same origin and the identifier for the
+        canvas is supplied in the canvasId property. </dd>
 
         <dt>tab</dt>
-        <dd>The source is a tab in the same browsers.</dd>
+        <dd>The source is a tab in the same browsers. The identifier for the tab
+        to be shared is provided in the tabId property. </dd>
 
         <dt>window</dt>
-        <dd>The source is a window in some application.</dd>
+        <dd>The source is a single window in some application.</dd>
 
         <dt>application</dt>
         <dd>The source is all the windows for some application.</dd>
@@ -3192,10 +3202,12 @@
             User Choice Permission to select the tab. </td> </tr>
               
           <tr> <td> window </td> <td> Requires an User Choice Permission to
-            select the window. </td> </tr>
+            select the window. The window can not be a window of the same
+            browser doing the sharing. </td> </tr>
               
           <tr> <td> application </td> <td> Requires an User Choice Permission to
-            select the application. </td> </tr>
+            select the application. The application can not be the same browser
+            doing the sharing. </td> </tr>
               
           <tr> <td> screen </td> <td> Requires Application Permission to use
             this as well as the User Choice Permission to select the screen to
