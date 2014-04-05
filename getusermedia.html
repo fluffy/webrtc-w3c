@@ -3019,8 +3019,8 @@
       security as discussed later in this section.  </p>
 
       <p> Capture of screen video is controlled by a new constraint called
-      "mediaSource" which takes string values such as "tab", "application",
-      or "screen". This constraint can be passed to the
+      "mediaSource" which takes string values such as "browser", "application",
+      "screen", or "camera". This constraint can be passed to the
       <code><a>getUserMedia</a></code> call which can display a dialog that
       allows the user to select the correct input as well as gather appropriate
       permissions from the user. The dialog is different depending on the value
@@ -3089,23 +3089,29 @@
 
         <dl class="idl" title="enum MediaSourceEnum">
 
+        <dt>camera</dt>
+        <dd>The source is a camera. This is the default. </dd>
+
+        <!-- 
         <dt>canvas</dt>
         <dd>The source is a selected HTML canvas element. In this case the
         canvas to be shared MUST be in the same origin and the identifier for the
         canvas is supplied in the canvasId property. [[OPEN ISSUE: why is this
         an integer? I would have expected it to be an id property and hence
         a string.]]</dd>
-
-        <dt>tab</dt>
+        -->
+        
+        <dt>browser</dt>
         <dd>The source is a tab in the same browsers. The identifier for the tab
         to be shared is provided in the tabId property.
-        [[OPEN ISSUE: What do these identifiers look like? I was not aware that
-        tabs had names.]]
+        OPEN ISSUE: What to use as a handle to the tab?
          </dd>
 
+         <!--
         <dt>window</dt>
         <dd>The source is a single window in some application. No identifier
         is supplied.</dd>
+        -->
 
         <dt>application</dt>
         <dd>The source is all the windows for some application. No identifier
@@ -3115,10 +3121,13 @@
         <dd>The source is the whole screen of one of the users monitors. No identifier
         is supplied.</dd>
 
+        <!--
         <dt>area</dt>
         <dd>The source is a user selected portion of one of the users
         monitors. Typically the area is selected by allowing the users to drag
         out a rectangle on the screen. No identifier is supplied.</dd>
+        -->
+        
       </dl>
 
       <p> The choice of source elements presented to the user for selection can
@@ -3147,6 +3156,7 @@
             <td> Identifier that specifies which tab to capture. </td>
           </tr>
 
+          <!--
                <tr id="def-constraint-canvasId">
             <td><dfn>canvasId</dfn>
             </td>
@@ -3156,6 +3166,7 @@
 
             <td> Identifier that specifies which canvas element to capture. </td>
           </tr>
+          -->
           
         </tbody>
       </table>
@@ -3167,13 +3178,13 @@
   
       <p> There are several security issues that need to be considered. One of
       the most important is the case of an "evil" web page requesting sharing of
-      some tab or of the browser as a whole
+      the browser
       then the "evil" page managing to open another web page, such as a
-      banking page, inside that tab. The "evil" web page could then see the
+      banking page, inside that browser. The "evil" web page could then see the
       information displayed on the banking page. A similar mechanism may
       be usable for bypassing CSRF protection. These attacks and others are
       described in more detail in [[!RTCWEB-SECURITY]]. For this reason,
-      this specification only permits sharing of the browser via "tab sharing"
+      this specification only permits sharing of the browser via "browser sharing"
       and requires a heightened permissions experience for that use.
       </p>
 
@@ -3201,20 +3212,25 @@
           </tr>
         </thead>
         <tbody>
+
+          <!--
           <tr> <td> canvas </td> <td> Some canvas will allow getImageData to
             access the pixels in the canvas. These types of canvas do not need
             any additional permission. Other canvas requires Application
             Permission. In addition, if a specific canvasId is not provided,
             there also needs to be a User Choice Permission to select the
             tab.</td> </tr>
-
-          <tr> <td> tab </td> <td> Requires Application Permission to use this
+            -->
+            
+          <tr> <td> browser </td> <td> Requires Application Permission to use this
             and if a specific tabId is not provided, there also needs to be a
             User Choice Permission to select the tab. </td> </tr>
 
+            <!--
           <tr> <td> window </td> <td> Requires an User Choice Permission to
             select the window. The window can not be a window of the same
             browser doing the sharing. </td> </tr>
+            -->
 
           <tr> <td> application </td> <td> Requires an User Choice Permission to
             select the application. The application can not be the same browser
@@ -3224,8 +3240,12 @@
             this as well as the User Choice Permission to select the screen to
             share for multiscreen system and to allow sharing to start for
             single screen systems. The browser window must be masked in this
-            case. [[OPEN ISSUE: Consistent with above, but....]] </td> </tr>
+            case. [[OPEN ISSUE: Consistent with above, but is it OK]] </td> </tr>
+
+            <!--
           <tr> <td> area </td> <td> Same as screen.  </td> </tr>
+          -->
+          
         </tbody>
       </table>
 
