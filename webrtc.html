@@ -178,16 +178,6 @@
             <p>Indicates which candidates the ICE engine is allowed to use.
             </p>
           </dd>
-
-
-          <dt>RTCIdentityOption requestIdentity = "ifconfigured"</dt>
-
-
-          <dd>
-            <p>See the <a href=
-            "#dom-rtcoaoptions-requestidentity">requestIdentity</a> member of
-            the <code><a>RTCOfferAnswerOptions</a></code> dictionary.</p>
-          </dd>
         </dl>
       </section>
 
@@ -276,26 +266,8 @@
         <p>These dictionaries describe the options that can be used to
         control the offer/answer creation process.</p>
 
-
-        <dl class="idl" title="dictionary RTCOfferAnswerOptions">
-          <dt>RTCIdentityOption requestIdentity = "ifconfigured"</dt>
-
-
-          <dd>
-            <p>The <dfn id=
-            "dom-rtcoaoptions-requestidentity"><code>requestIdentity</code></dfn>
-            option indicates whether an identity should be requested. The option
-            may be used with either of the <code>createOffer()</code> or
-            <code>createAnswer()</code> calls, but also with the <code>
-            <a>RTCPeerConnection</a></code> constructor. Note that as long as
-            DTLS-SRTP is in used, fingerprints will be sent regardless of the
-            value of this option.</p>
-          </dd>
-        </dl>
-
-
-        <dl class="idl" title=
-        "dictionary RTCOfferOptions : RTCOfferAnswerOptions">
+       <dl class="idl" title=
+        "dictionary RTCOfferOptions">
 
           <dt>long offerToReceiveVideo</dt>
 
@@ -897,8 +869,7 @@
 
 
           <dt>void createAnswer (RTCSessionDescriptionCallback successCallback,
-          RTCPeerConnectionErrorCallback failureCallback, optional
-          RTCOfferAnswerOptions options)</dt>
+          RTCPeerConnectionErrorCallback failureCallback)</dt>
 
 
           <dd>
@@ -5625,31 +5596,36 @@ sender.insertDTMF("123");
 
     <p>This section will be removed before publication.</p>
     <!-- Why do the first two headings automatically convert to <h2>? -->
+    <!-- Because you haven't added a <section> element around them
+         and respec rewrites h? elements based on the section depth -->
 
 
     <h3>Changes since March 21, 2014</h3>
 
     <ol>
       <li>  Changes to identity-related text: </li>
-      
+
       <ul>
-     
+
         <li> Removed noaccess constraint </li>
-        
+
         <li> Add the ability to peerIdentity constrain RTCPeerConnection, which
         limits communication to a single peer </li>
-   
+
         <li> Change the way that the browser communicates with IdP to a message
         channel (http://www.w3.org/TR/webmessaging/#message-channels) </li>
-        
+
         <li> Improved error feedback from IdP interactions (added new events
         with more detailed context) </li>
-        
+
         <li> Changed the way that an IdP is able to request user login
         (LOGINNEEDED message) </li>
-        
+
+        <li> Removed requestIdentity from RTCConfiguration and
+        RTCOfferAnswerOptions.  Removed RTCOfferAnswerOptions as a result. </li>
+
       </ul>
-            
+
       <li>Bug 25155: maxRetransmitTime is not the name of the SCTP concept it
       points to.</li>
     </ol>
