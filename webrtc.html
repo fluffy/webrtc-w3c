@@ -4978,21 +4978,23 @@ function processStats() {
         </li>
       </ul>
 
-     <p>A <code>MediaStreamTrack</code> that is added to another
-      <code>MediaStream</code> remains isolated.  Tracks that are isolated can
-      be added to other <code>MediaStream</code>s, but this causes the resulting
-      MediaStream to have a combination of isolation restrictions.  A
-      <code>MediaStream</code> containing <code>MediaStreamTrack</code>
-      instances with mixed isolation properties can be displayed, but cannot be
-      sent using <code><a>RTCPeerConnection</a></code>.</p>
-
       <p>Any <code>peerIdentity</code> property MUST be retained on cloned
       copies of <code>MediaStreamTrack</code>s.</p>
 
+      <p>The isolation property of each indivdual track determines what
+      restrictions apply.  A <code>MediaStreamTrack</code> that is added to
+      another <code>MediaStream</code> remains isolated.  Thus, a
+      <code>MediaStream</code> can have a combination of isolation properties on
+      the set of tracks it contains.</p>
+
       <!-- Any stream or track that might be derived from an isolated stream,
-           such as
-           through <a href="https://www.w3.org/TR/streamproc/#media-element-extensions">captureStreamUntilEnded
+           such as through <a
+           href="https://www.w3.org/TR/streamproc/#media-element-extensions">captureStreamUntilEnded
            or captureStream</a>, MUST also retain any isolation protections.
+           Where playback is switched between tracks with different isolation
+           properties, <code>captureStream</code> and
+           <code>captureStreamUntilEnded</code> produce tracks with dynamically
+           changing isolation properties.
         -->
 
       <section id="isolated-pc">
