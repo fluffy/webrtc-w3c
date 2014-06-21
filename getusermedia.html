@@ -3255,6 +3255,23 @@
         stream was affected must be removed.</p>
       </div>
 
+      <div class="practice">
+	<span id="stored-permissions" class="practicelab">Stored
+	Permissions</span>
+
+	<p class="practicedesc">When permission is requested for a
+	device, the UA may choose to store that permission, if granted, for later
+	use by the same origin, so that the user does not need to
+	grant permission again at a later time. Such storing should
+	only be done when the page is secure (served over HTTPS and
+	having no mixed content). It is an UA choice whether it
+	offers functionality to store permission to each device
+	separately, all devices of a given class, or all devices; the
+	choice needs to be apparent to the user.</p>
+	<p class="practicedesc">When permission is not stored,
+	permission should last only until such time as all
+	MediaStreamTracks sourced from that device have been stopped.</p>
+      </div>
 
       <div class="practice">
         <span id="handling-devices" class="practicelab">Handling multiple
@@ -4661,6 +4678,7 @@ if(supports["facingMode"]) {
        
       <li>Bug 25784: "on air" indication is underspecified -
       separated "access granted" and "on air" indicators.</li>
+      <li>But 22214: How long do permissions persist?</li>
 
     </ol>
 
